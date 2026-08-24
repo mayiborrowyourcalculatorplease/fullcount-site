@@ -3,19 +3,174 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Full Count</title>
+<title>Full Count · See trends the box scores hide</title>
+<meta name="description" content="Full Count is an iOS app that turns GameChanger box scores into season-long trend charts for your player. No team administrator access required.">
 <style>
   :root { color-scheme: light dark; }
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-         line-height: 1.6; max-width: 42rem; margin: 0 auto; padding: 4rem 1.25rem; text-align: center; }
-  h1 { font-size: 2rem; } p { color: #666; }
-  a { color: #0a66c2; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    line-height: 1.6; margin: 0;
+  }
+  a { color: #0a66c2; color: light-dark(#0a66c2, #6cb4f5); }
+  .muted { color: #555; color: light-dark(#555, #a8a8a8); }
+  main { max-width: 62rem; margin: 0 auto; padding: 0 1.25rem 2rem; }
+
+  .hero { text-align: center; padding: 4rem 1.25rem 2.5rem; }
+  .hero h1 { font-size: 2.4rem; margin: 0 0 0.25rem; }
+  .tagline { font-size: 1.35rem; font-weight: 600; margin: 0 0 1rem; }
+  .hero p.lede { max-width: 34rem; margin: 0 auto 1.5rem; }
+  .cta {
+    display: inline-block; padding: 0.7rem 1.5rem; border-radius: 0.6rem;
+    background: #0a66c2; color: #fff; text-decoration: none; font-weight: 600;
+  }
+  .cta-note { font-size: 0.9rem; margin-top: 0.75rem; }
+
+  .shots { display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; padding: 1rem 0 2rem; }
+  .shots figure { margin: 0; width: 270px; text-align: center; }
+  .shots img {
+    width: 100%; height: auto; border-radius: 1.4rem;
+    border: 1px solid #ddd; border-color: light-dark(#ddd, #3a3a3a);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  }
+  .shots figcaption { font-size: 0.85rem; margin-top: 0.5rem; }
+
+  .features { padding: 1rem 0; }
+  .features section { max-width: 40rem; margin: 0 auto 2.25rem; }
+  .features h2 { font-size: 1.35rem; margin: 0 0 0.4rem; }
+  .features p { margin: 0 0 0.75rem; }
+  .features section { display: flex; gap: 2rem; align-items: center; max-width: 52rem; }
+  .features section:nth-child(even) { flex-direction: row-reverse; }
+  .features .copy { flex: 1; }
+  .features .inline-shot { margin: 0 auto; width: 240px; flex-shrink: 0; text-align: center; }
+  .features .inline-shot img { width: 100%; height: auto; border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.18); }
+  .features .inline-shot figcaption { font-size: 0.85rem; margin-top: 0.5rem; }
+  @media (max-width: 640px) {
+    .features section, .features section:nth-child(even) { flex-direction: column; }
+  }
+
+  .closing { text-align: center; padding: 2rem 1.25rem 3rem; }
+  .closing p { max-width: 32rem; margin: 0 auto 1.5rem; }
+
+  footer {
+    text-align: center; padding: 2rem 1.25rem 3rem; font-size: 0.9rem;
+    border-top: 1px solid #ddd; border-top-color: light-dark(#ddd, #3a3a3a);
+  }
 </style>
 </head>
 <body>
-<h1>Full Count</h1>
-<p>See trends the box scores hide.</p>
-<p>Track and graph youth softball stats from the box scores you can already see. No team admin required.</p>
-<p><a href="privacy.html">Privacy Policy</a> · <a href="mailto:fullcountstattracker@gmail.com">Contact</a></p>
+
+<header class="hero">
+  <h1>Full Count</h1>
+  <p class="tagline">See trends the box scores hide.</p>
+  <p class="lede muted">Full Count is an iOS app for softball and baseball families. It turns
+  GameChanger box scores into season-long trend charts for your player, so progress is
+  visible while the season is still underway.</p>
+  <a class="cta" href="mailto:fullcountstattracker@gmail.com?subject=Full%20Count%20beta">Request a beta invitation</a>
+  <p class="cta-note muted">Full Count is currently in beta through TestFlight. Email us to request an invitation.</p>
+</header>
+
+<main>
+
+  <div class="features">
+
+    <section>
+      <div class="copy">
+      <h2>Import without administrator access</h2>
+      <p>You don't need to manage the team's GameChanger account to keep your player's
+      records. Capture screenshots of the box score directly from the GameChanger app,
+      and Full Count reads them, checks every number, and builds the game. Any data you
+      can see, you can keep. Rows clipped at the edge of the screen are recovered rather
+      than discarded. For an even easier import, use the GameChanger box score PDF
+      export.</p>
+      </div>
+      <figure class="inline-shot">
+        <img src="images/13-import-menu.png" width="1206" height="2622"
+             alt="Home tab with the Import menu open, offering Import from PDF and Import from Screenshots.">
+        <figcaption class="muted">Two ways in: PDF export or screenshots.</figcaption>
+      </figure>
+    </section>
+
+    <section>
+      <div class="copy">
+      <h2>Correct the GameChanger scoring</h2>
+      <p>Screenshot imports are verified against the box score's own team totals. When a
+      number doesn't add up, whether from a misread digit or an error in the original
+      scoring, Full Count identifies the exact discrepancy and lets you correct it or
+      accept the box score as printed. Youth-league scorekeeping is imperfect. Your
+      records don't have to inherit its mistakes.</p>
+      </div>
+      <figure class="inline-shot">
+        <img src="images/14-import-verify.png" width="1206" height="2622"
+             alt="The import review screen flagging that the hits column is one short of the box score's own total, naming the rows to check, with buttons to correct the value or accept the box score as printed.">
+        <figcaption class="muted">A discrepancy is named exactly, then corrected or accepted.</figcaption>
+      </figure>
+    </section>
+
+    <section>
+      <div class="copy">
+      <h2>Targets matched to the age division</h2>
+      <p>The tiers come from coaching consensus for each age division and sport, with
+      separate softball and baseball tables from 8U through 18U. Full Count plots each
+      stat game by game, and on key charts it draws the division's targets alongside
+      the data: a green band marks Good, and a dashed line marks Excellent.</p>
+      <p>Each season keeps the targets for the division it was played in, so earlier
+      seasons remain measured against the level your player was competing at.</p>
+      </div>
+      <figure class="inline-shot">
+        <img src="images/12-game-log-pitching.png" width="1206" height="2622"
+             alt="Season game log with pitching charts. The strike percentage chart climbs from 58 to 74 across the spring, with a green Good band at 58 to 62 percent and a dashed Excellent line at 65 percent.">
+        <figcaption class="muted">Good and Excellent target lines drawn for the season's division.</figcaption>
+      </figure>
+    </section>
+
+    <section>
+      <div class="copy">
+      <h2>Season, tournament, and career views</h2>
+      <p>A single import feeds every view: a season dashboard, a game-by-game log,
+      tournaments grouped automatically by date, and career charts spanning every team
+      and season. Game lists lead with the final score and the win or loss, and Best
+      Performances collects standout games, batting and pitching alike, in one place.</p>
+      </div>
+      <figure class="inline-shot">
+        <img src="images/02-trends.png" width="1206" height="2622"
+             alt="Trends tab showing career charts of a player's stats plotted across every season.">
+        <figcaption class="muted">Career charts span every team and season.</figcaption>
+      </figure>
+    </section>
+
+    <section>
+      <div class="copy">
+      <h2>Family sharing through iCloud</h2>
+      <p>Share a player once and every phone stays current. Imports appear on each
+      family member's device automatically, with a notification when someone adds a
+      game. Access is granted per person: View Only for relatives who follow along, or
+      View and Edit for a second parent who imports games. Full Count requires no
+      account and relies on no third-party services; your data is stored on your device
+      and in your own iCloud.</p>
+      </div>
+      <figure class="inline-shot">
+        <img src="images/05-players.png" width="1206" height="2622"
+             alt="Players tab listing the family's athletes, with the current player checked.">
+        <figcaption class="muted">Every athlete the family tracks, in one place.</figcaption>
+      </figure>
+    </section>
+
+  </div>
+
+</main>
+
+<div class="closing">
+  <p>Full Count is in beta on TestFlight while we prepare for an App Store release.
+  To try it with your player's games, request an invitation.</p>
+  <a class="cta" href="mailto:fullcountstattracker@gmail.com?subject=Full%20Count%20beta">Request a beta invitation</a>
+</div>
+
+<footer class="muted">
+  <p>All screenshots show fictional demonstration data.</p>
+  <p><a href="privacy.html">Privacy Policy</a> · <a href="mailto:fullcountstattracker@gmail.com">Contact</a></p>
+</footer>
+
 </body>
 </html>
