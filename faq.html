@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Full Count · Frequently Asked Questions</title>
+<meta name="description" content="Answers to common questions about Full Count: why stats appear where they do, where the target lines come from, and how to get a box score out of GameChanger.">
+<style>
+  :root { color-scheme: light dark; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    line-height: 1.6; margin: 0;
+  }
+  a { color: #0a66c2; color: light-dark(#0a66c2, #6cb4f5); }
+  .shot { margin: 1.5rem 0; width: 230px; }
+  .shot img { width: 100%; height: auto; border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.16); display: block; }
+  .shot figcaption { font-size: 0.85rem; margin-top: 0.5rem; }
+  .pair { display: flex; flex-wrap: wrap; gap: 1.5rem; margin: 1.5rem 0; }
+  .pair .shot { margin: 0; }
+  .diagram { margin: 1.75rem 0; }
+  .diagram svg { width: 100%; height: auto; }
+  .diagram figcaption { font-size: 0.85rem; margin-top: 0.6rem; }
+  .muted { color: #555; color: light-dark(#555, #a8a8a8); }
+  main { max-width: 62rem; margin: 0 auto; padding: 0 1.25rem 2rem; }
+
+  .hero { text-align: center; padding: 3.5rem 1.25rem 1.5rem; }
+  .hero h1 { font-size: 2.2rem; margin: 0 0 0.25rem; }
+  .hero p.lede { max-width: 34rem; margin: 0 auto 1rem; }
+  .back { font-size: 0.9rem; }
+
+  .faq { max-width: 42rem; margin: 0 auto; }
+  .faq section { margin: 0 0 2.5rem; }
+  .faq h2 { font-size: 1.3rem; margin: 0 0 0.5rem; }
+  .faq h3 { font-size: 1.05rem; margin: 1.25rem 0 0.35rem; }
+  .faq p { margin: 0 0 0.85rem; }
+  .faq ol, .faq ul { margin: 0 0 0.85rem; padding-left: 1.4rem; }
+  .faq li { margin-bottom: 0.4rem; }
+
+  .closing { text-align: center; padding: 1rem 1.25rem 3rem; }
+  .closing p { max-width: 32rem; margin: 0 auto 1.5rem; }
+  .cta {
+    display: inline-block; padding: 0.7rem 1.5rem; border-radius: 0.6rem;
+    background: #0a66c2; color: #fff; text-decoration: none; font-weight: 600;
+  }
+
+  footer {
+    text-align: center; padding: 2rem 1.25rem 3rem; font-size: 0.9rem;
+    border-top: 1px solid #ddd; border-top-color: light-dark(#ddd, #3a3a3a);
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <h1>Frequently Asked Questions</h1>
+  <p class="lede muted">How Full Count decides what to show you, where the target lines
+  come from, and how to get a box score out of GameChanger.</p>
+  <p class="back"><a href="index.html">Back to Full Count</a></p>
+</header>
+
+<main>
+  <div class="faq">
+
+    <section>
+      <h2>Why do some stats appear on some views but not others?</h2>
+
+      <p>Full Count shows a stat in the places where it actually means something. That
+      sounds like a dodge, so here is the real rule, which comes down to three kinds of
+      stats.</p>
+
+      <h3>Counting stats show up almost everywhere</h3>
+      <p>Hits, strikeouts, walks, RBI, innings pitched, pitches thrown. These are just
+      records of what happened, so they appear on a single game's box score, they add up
+      into season, tournament, and career totals, and they get plotted game by game on
+      the charts.</p>
+
+      <h3>Rate stats need a season to mean anything</h3>
+      <p>Batting average, on-base percentage, slugging, ERA, and WHIP are all fractions,
+      and a fraction with a tiny denominator is noise. One at bat and one hit is a 1.000
+      average, which tells you nothing about your player. So these live on the season
+      dashboard, the tournament totals, the career totals, and the trend charts, where
+      enough games have accumulated for the number to settle down.</p>
+      <p>Strike percentage is the one rate you will see on a single game, because a
+      pitcher throws dozens of pitches in one outing. The denominator is already large by
+      the time she walks off the field.</p>
+
+      <div class="pair">
+      <figure class="shot">
+        <img src="images/09-game-detail.png" width="1206" height="2622" alt="A single game's page showing that game's counting stats for the player.">
+        <figcaption class="muted">One game: what happened, in counts.</figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="images/07-season-summary.png" width="1206" height="2622" alt="Season summary dashboard showing accumulated totals alongside rate stats like ERA and WHIP.">
+        <figcaption class="muted">A season: rates, once the denominator is real.</figcaption>
+      </figure>
+      </div>
+
+      <h3>Some stats only exist as an aggregate</h3>
+      <p>Games pitched, games played, and a win-loss record are counts across games. A
+      single game can't have a record, so a game shows a bold W or L next to its stat
+      line instead, and the record appears where a list of games does.</p>
+
+      <h3>The charts favor stats you can compare game to game</h3>
+      <p>Charts exist to show a trend, so they lean on stats that survive a short game
+      and a long one. That's why you'll find K per inning and BB per inning on the
+      pitching charts, and strikeout rate and walk rate on the batting charts, rather
+      than raw per-game totals alone. A four-inning outing and a six-inning outing are
+      honestly comparable once the stat is expressed per inning.</p>
+
+      <h3>Tournament pages are short on purpose</h3>
+      <p>A tournament in Full Count is a cluster of games on the same dates, usually two
+      or three of them. A long grid of rate stats over three games would read as more
+      precision than the weekend can support, so the tournament totals stay brief.</p>
+
+      <p>One list is entirely yours: the stat tiles on the Home tab. Settings lets you
+      pick which stats sit there, from every pitching and batting stat the app tracks.</p>
+    </section>
+
+    <section>
+      <figure class="shot">
+        <img src="images/01-home.png" width="1206" height="2622" alt="Home tab showing a row of stat tiles chosen by the user above an Explore grid.">
+        <figcaption class="muted">The Home tiles are yours to choose in Settings.</figcaption>
+      </figure>
+
+      <h2>Why do some charts have target lines and others don't?</h2>
+
+      <p>Target lines are drawn only for rate stats. On the pitching side that means
+      strike percentage, ERA, WHIP, K per inning, and BB per inning. On the batting side
+      it means batting average, on-base percentage, slugging, OPS, strikeout rate, and
+      walk rate.</p>
+
+      <p>The reason is that a rate is comparable across games, divisions, and workloads.
+      Strike percentage means the same thing whether your player threw 40 pitches or 90.
+      A raw count doesn't work that way. Six strikeouts in a game is outstanding in four
+      innings and ordinary in seven, and it depends just as much on how many batters came
+      to the plate as on how she pitched. Nobody publishes a benchmark for "strikeouts
+      per game" at 12U, and if Full Count drew one, it would be making it up. So the
+      counting-stat charts show your player's own line and nothing else.</p>
+
+      <p>Two more things worth knowing about the lines you do see. They are specific to
+      the age division and the sport, so a 12U softball season is measured against 12U
+      softball numbers and nothing else. And where no honest benchmark exists, the chart
+      says so rather than inventing one. ERA is the clearest example: below 12U, unearned
+      runs and scorekeeping judgment dominate the number, so the source tables give no
+      ERA tiers at all and the chart tells you that instead of drawing a line.</p>
+
+
+      <figure class="diagram">
+        <svg viewBox="0 0 640 260" role="img"
+             aria-label="Two panels comparing 10U and 12U softball targets. Strike percentage: at 10U the Good band runs from 58 to 62 percent and Excellent begins at 65 percent; at 12U the Good band shifts up to 60 to 63 percent while Excellent stays at 65 percent. ERA: at 10U there is no benchmark at all; at 12U Good runs from 0.31 to 0.46 earned runs per inning and Excellent is below 0.26.">
+          <style>
+            .lbl { font: 500 13px -apple-system, system-ui, sans-serif;
+                   fill: light-dark(#444, #bbb); }
+            .div { font: 600 14px -apple-system, system-ui, sans-serif;
+                   fill: light-dark(#222, #eee); }
+            .ttl { font: 600 14px -apple-system, system-ui, sans-serif;
+                   fill: light-dark(#222, #eee); }
+            .tick { font: 400 11px -apple-system, system-ui, sans-serif;
+                    fill: light-dark(#888, #888); }
+            .none { font: italic 13px -apple-system, system-ui, sans-serif;
+                    fill: light-dark(#a15c00, #f0a850); }
+            .axis { stroke: light-dark(#ccc, #444); stroke-width: 1; }
+            .good { fill: #34a853; fill-opacity: 0.22; }
+            .goodline { stroke: #34a853; stroke-width: 1.5; }
+            .exc { stroke: #7fd68f; stroke-width: 2; stroke-dasharray: 6 4; }
+            .excl { font: 600 11px -apple-system, system-ui, sans-serif; fill: #7fd68f; }
+            .goodl { font: 600 11px -apple-system, system-ui, sans-serif; fill: #34a853; }
+          </style>
+
+          <text x="0" y="14" class="ttl">Strike percentage</text>
+          <line x1="46" y1="34" x2="46" y2="196" class="axis"/>
+          <text x="20" y="42" class="tick">70</text>
+          <text x="20" y="92" class="tick">65</text>
+          <text x="20" y="142" class="tick">60</text>
+          <text x="20" y="192" class="tick">55</text>
+
+          <rect x="60" y="112" width="90" height="40" class="good"/>
+          <line x1="60" y1="112" x2="150" y2="112" class="goodline"/>
+          <line x1="60" y1="152" x2="150" y2="152" class="goodline"/>
+          <line x1="60" y1="92" x2="150" y2="92" class="exc"/>
+          <text x="60" y="214" class="div">10U</text>
+          <text x="60" y="232" class="goodl">Good 58 to 62</text>
+          <text x="60" y="84" class="excl">Excellent 65+</text>
+
+          <rect x="180" y="102" width="90" height="30" class="good"/>
+          <line x1="180" y1="102" x2="270" y2="102" class="goodline"/>
+          <line x1="180" y1="132" x2="270" y2="132" class="goodline"/>
+          <line x1="180" y1="92" x2="270" y2="92" class="exc"/>
+          <text x="180" y="214" class="div">12U</text>
+          <text x="180" y="232" class="goodl">Good 60 to 63</text>
+
+          <text x="350" y="14" class="ttl">ERA (earned runs per inning)</text>
+          <line x1="396" y1="34" x2="396" y2="196" class="axis"/>
+          <text x="360" y="42" class="tick">0.6</text>
+          <text x="360" y="96" class="tick">0.4</text>
+          <text x="360" y="150" class="tick">0.2</text>
+
+          <text x="410" y="118" class="none">No benchmark</text>
+          <text x="410" y="136" class="none">at this level</text>
+          <text x="410" y="214" class="div">10U</text>
+
+          <rect x="530" y="63" width="90" height="41" class="good"/>
+          <line x1="530" y1="63" x2="620" y2="63" class="goodline"/>
+          <line x1="530" y1="104" x2="620" y2="104" class="goodline"/>
+          <line x1="530" y1="131" x2="620" y2="131" class="exc"/>
+          <text x="530" y="214" class="div">12U</text>
+          <text x="530" y="232" class="goodl">Good 0.31 to 0.46</text>
+          <text x="530" y="148" class="excl">Excellent below 0.26</text>
+        </svg>
+        <figcaption class="muted">Real values from the app. Moving up a division shifts the strike percentage band and leaves Excellent where it is, while ERA gains targets at 12U that don't exist below it.</figcaption>
+      </figure>
+
+      <p>A chart that spans more than one division steps its target line where the
+      division changed, so an older season stays measured against the level your player
+      was competing at. If you'd rather not see the lines at all, you can turn them off
+      in Settings.</p>
+
+      <p>One note on the ERA label. Full Count plots earned runs per inning rather than a
+      traditional scaled ERA, because youth games run anywhere from four to six innings
+      and a seven-inning assumption would distort every number. The targets are converted
+      to match.</p>
+    </section>
+
+    <section>
+      <h2>Where do the targets come from?</h2>
+
+      <p>They are coaching-consensus tiers, assembled from the kinds of resources coaches
+      and families actually use: coaching guides, recruiting guidance, and the benchmark
+      charts published by training sites. They are not official league data, and they are
+      not measured averages of a real population of players. No governing body publishes
+      that, which is exactly why the tiers had to be built this way.</p>
+
+      <p>Treat them as a coach's rule of thumb. The intent is a sense of where a player
+      stands and what the next step looks like, not a scouting verdict on your kid. Full
+      Count draws only the Good and Excellent tiers, deliberately, because framing a
+      season around a middle tier isn't useful to a young player.</p>
+
+      <p>The tiers differ by age division and by sport, with separate softball and
+      baseball tables, and they shift as players move up. Batting averages generally
+      decline with age as the pitching gets better and the distances get longer, so a
+      number that was ordinary at 10U can be strong at 14U.</p>
+
+      <p>Context the lines can't capture still matters. Rec and travel ball are different
+      environments, and a handful of games is a small sample no matter how the chart
+      looks. A hot weekend is a hot weekend.</p>
+    </section>
+
+    <section>
+      <h2>How do I export the box score from GameChanger?</h2>
+
+      <p>The PDF export is the easiest import of all, when you have access to it.</p>
+
+      <ol>
+        <li>Open the GameChanger app on your phone.</li>
+        <li>Pick your team's Schedule.</li>
+        <li>View the game you want.</li>
+        <li>Tap "Box Score".</li>
+        <li>Tap "Export Stats" to get the PDF.</li>
+      </ol>
+
+      <p>Then open Full Count, tap Import, and choose Import from PDF. You can select
+      several games at once.</p>
+
+      <p>Two limits to be aware of. This is available in the GameChanger mobile app only,
+      not on the web, and the "Export Stats" button appears only for accounts that have
+      been given access to it, which usually means team staff and administrators. If you
+      don't see the button, you haven't done anything wrong, and you don't need to ask
+      anyone for permission. Screenshots of the same box score work just as well, and the
+      next answer covers how to take them.</p>
+    </section>
+
+    <section>
+      <figure class="shot">
+        <img src="images/16-help-importing.png" width="1206" height="2622" alt="The app's own help page, listing the four steps to the GameChanger box score and the screenshot tips.">
+        <figcaption class="muted">The same instructions live in the app, under Settings.</figcaption>
+      </figure>
+
+      <h2>How do I take good screenshots of a box score?</h2>
+
+      <p>Get to the box score the same way, through Schedule, the game, then "Box Score".
+      Then screenshot your way down the table.</p>
+
+      <ul>
+        <li><strong>Capture all of your team's rows at a minimum.</strong> The whole
+        table is what lets Full Count check every number against the box score's own team
+        totals, which is how a misread digit gets caught before anything is saved.</li>
+        <li><strong>Overlap your captures.</strong> A row that appears in two screenshots
+        is read twice and the readings are compared. Overlap makes the import more
+        accurate, not less.</li>
+        <li><strong>Don't leave gaps.</strong> Scroll a little less than one screen
+        between captures so no row is skipped between shots.</li>
+        <li><strong>Pick them from Photos.</strong> Your screenshots save there
+        automatically, and Import from Screenshots in Full Count is where you select
+        them.</li>
+      </ul>
+
+      <p>It's fine if rows are cut off at the top or bottom edge of a screenshot. Full
+      Count prefers a clean reading of the same row from another capture, which is
+      another reason the overlap helps.</p>
+
+      <p>The same guidance is in the app, under Settings, if you'd rather have it on your
+      phone at the field.</p>
+          <figure class="shot">
+        <img src="images/14-import-verify.png" width="1206" height="2622" alt="The import review screen reporting that the hits column is one short of the box score's own total, naming the rows to check.">
+        <figcaption class="muted">A complete table is what makes this check possible: every column is compared to the box score's own totals before anything is saved.</figcaption>
+      </figure>
+</section>
+
+  </div>
+</main>
+
+<div class="closing">
+  <p>Still have a question? Email us and we'll answer it.</p>
+  <a class="cta" href="mailto:fullcountstattracker@gmail.com?subject=Full%20Count%20question">Ask a question</a>
+</div>
+
+<footer class="muted">
+  <p><a href="index.html">Home</a> · <a href="privacy.html">Privacy Policy</a> · <a href="mailto:fullcountstattracker@gmail.com">Contact</a></p>
+</footer>
+
+</body>
+</html>
