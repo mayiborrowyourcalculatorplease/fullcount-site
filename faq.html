@@ -7,7 +7,7 @@
 <link rel="icon" type="image/png" sizes="16x16" href="images/icon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="images/icon-180.png">
 <title>Full Count · Frequently Asked Questions</title>
-<meta name="description" content="Answers to common questions about Full Count: why stats appear where they do, where the target lines come from, and how to get a box score out of GameChanger.">
+<meta name="description" content="Answers to common questions about Full Count: how importing from GameChanger works, whether you have to enter stats by hand, where the target lines come from, and where your data is stored.">
 <style>
   :root { color-scheme: light dark; }
   * { box-sizing: border-box; }
@@ -58,13 +58,43 @@
 
 <header class="hero">
   <h1>Frequently Asked Questions</h1>
-  <p class="lede muted">How Full Count decides what to show you, where the target lines
-  come from, and how to get a box score out of GameChanger.</p>
+  <p class="lede muted">How importing works, what the charts and their target lines
+  mean, and where your data lives.</p>
   <p class="back"><a href="index.html">Back to Full Count</a></p>
 </header>
 
 <main>
   <div class="faq">
+
+    <section>
+      <h2>Can I try it before importing my own games?</h2>
+
+      <p>Yes. Tap "Try an Example Game" in Settings and Full Count creates Brindlee
+      Brantwood, a fictional 10U softball player, then walks you through importing one of
+      her games. It runs the real import on a real-format box score, so what you see is
+      what you'll do with your own games. At the end her stats and charts are there to
+      poke at, target lines and all.</p>
+
+      <p>None of it is real and none of it sticks around unless you want it to. Delete
+      Brindlee in the Players tab and her team, her season, and that game go with her. The
+      tour is offered the first time you open the app, and you can run it again from
+      Settings whenever you like.</p>
+    </section>
+
+    <section>
+      <h2>Do I have to enter stats by hand?</h2>
+
+      <p>No, and there's nowhere to. Every game in Full Count comes from a GameChanger box
+      score, either the PDF export or screenshots you take yourself, and the app reads the
+      numbers off it for you.</p>
+
+      <p>What you do instead is confirm the reading. Before anything is saved, every
+      column is compared against the box score's own team totals, and if a column comes up
+      short you're told which one and which rows are worth a look. On a screenshot import
+      you can correct the cell right there. If it's the box score itself that doesn't add
+      up, which happens more than you'd expect in youth ball, you can accept it as printed
+      and move on.</p>
+    </section>
 
     <section>
       <h2>Why do some stats appear on some views but not others?</h2>
@@ -315,6 +345,66 @@
         <figcaption class="muted">A complete table is what makes this check possible: every column is compared to the box score's own totals before anything is saved.</figcaption>
       </figure>
 </section>
+
+    <section>
+      <h2>How does Full Count know which team and season a game belongs to?</h2>
+
+      <p>It works it out from the box score, then shows you what it decided before
+      anything is saved.</p>
+
+      <p>The team name comes straight off the box score, spelled the way it is there.
+      GameChanger team names run long, so if you'd rather see something shorter, rename
+      the team once. Every later import carrying that same original name attaches to your
+      renamed team on its own, so you never fix it twice.</p>
+
+      <p>The season comes from the game's date. January through July is Spring, August
+      through December is Fall. That's a rough cut rather than any league's real calendar,
+      so if yours runs differently, the review screen lets you put the game in a different
+      season or start a new one.</p>
+
+      <p>Importing a stack of games at once is fine. Confirm the first, and the ones that
+      match what it established go through without asking again. A game you already have
+      is skipped rather than added twice, and the summary at the end tells you how many
+      were already there.</p>
+    </section>
+
+    <section>
+      <figure class="shot">
+        <img src="images/05-players.png" width="1206" height="2622" alt="Players tab listing two tracked players, Casey Morgan and Riley Parker, with a checkmark beside the one currently selected.">
+        <figcaption class="muted">Each player keeps her own teams, seasons, and charts.</figcaption>
+      </figure>
+
+      <h2>Can I track more than one player?</h2>
+
+      <p>Yes. The Players tab holds as many as you need, and each one keeps her own teams,
+      seasons, games, and charts. Tap a name to switch and the rest of the app follows.</p>
+
+      <p>Two of yours on the same roster works too. When a box score names more than one
+      player you track, Full Count asks which one the game belongs to rather than guessing,
+      and you can apply that answer to the rest of the batch.</p>
+
+      <p>You choose a sport, softball or baseball, when you add a player. The benchmark
+      tables are different for the two, so the target lines match the game she's
+      playing.</p>
+    </section>
+
+    <section>
+      <h2>Where does my data live, and what happens to my screenshots?</h2>
+
+      <p>On your phone and in your own iCloud. There's no Full Count account to create, no
+      analytics, no ads, and no third-party service in the middle. Sharing a player with
+      the other parent or a grandparent goes through Apple's iCloud sharing, and you set
+      what each person can do: view only, or view and edit.</p>
+
+      <p>Screenshots are read on your phone with Apple's built-in text recognition. Full
+      Count keeps the text it recognized, meaning the names and numbers and where they sat
+      on the page. It does not keep the images. Your photos never leave your phone.</p>
+
+      <p>One thing worth knowing: a box score lists both teams, so an import brings in the
+      other players' names and stats alongside your own player's, exactly as they were
+      displayed at the game. The <a href="privacy.html">privacy policy</a> spells all of
+      this out.</p>
+    </section>
 
   </div>
 </main>
