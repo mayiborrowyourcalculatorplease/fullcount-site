@@ -280,6 +280,11 @@
       decline with age as the pitching gets better and the distances get longer, so a
       number that was ordinary at 10U can be strong at 14U.</p>
 
+      <p>The softball tables are the fuller ones today. Baseball has batting average,
+      slugging, strike percentage, and ERA. On the other rate charts a baseball player
+      sees no lines at all, because Full Count would rather draw nothing than borrow
+      softball's numbers for a different game.</p>
+
       <p>Context the lines can't capture still matters. Rec and travel ball are different
       environments, and a handful of games is a small sample no matter how the chart
       looks. A hot weekend is a hot weekend.</p>
@@ -325,18 +330,27 @@
         table is what lets Full Count check every number against the box score's own team
         totals, which is how a misread digit gets caught before anything is saved.</li>
         <li><strong>Overlap your captures.</strong> A row that appears in two screenshots
-        is read twice and the readings are compared. Overlap makes the import more
-        accurate, not less.</li>
+        is read twice and the readings are compared cell by cell. A number one capture
+        missed gets filled in from the other, and only two captures reading the same cell
+        differently counts as a disagreement. Overlap makes the import more accurate, not
+        less.</li>
         <li><strong>Don't leave gaps.</strong> Scroll a little less than one screen
         between captures so no row is skipped between shots.</li>
         <li><strong>Pick them from Photos.</strong> Your screenshots save there
         automatically, and Import from Screenshots in Full Count is where you select
-        them.</li>
+        them. Up to twelve at a time. If a capture lives somewhere else instead, in the
+        Files app or a cloud drive, tap Files at the top of that picker and go get
+        it.</li>
       </ul>
 
       <p>It's fine if rows are cut off at the top or bottom edge of a screenshot. Full
       Count prefers a clean reading of the same row from another capture, which is
       another reason the overlap helps.</p>
+
+      <p>If your captures never reached the team totals row, there's nothing for the app
+      to check the columns against, and it tells you that on the review screen instead of
+      calling the reading verified. It won't stop you saving the game. It just won't
+      pretend it checked something it couldn't.</p>
 
       <p>The same guidance is in the app, under Settings, if you'd rather have it on your
       phone at the field.</p>
@@ -345,6 +359,21 @@
         <figcaption class="muted">A complete table is what makes this check possible: every column is compared to the box score's own totals before anything is saved.</figcaption>
       </figure>
 </section>
+
+    <section>
+      <h2>Can I send a box score to Full Count without saving it first?</h2>
+
+      <p>Yes. Full Count is one of the destinations in the iOS share sheet, so anywhere
+      you see the share button you can send screenshots or a PDF box score straight
+      across: from Photos, from the Files app, from a cloud drive. A small screen appears
+      asking which player the game is for. Tap Add and you're done.</p>
+
+      <p>Nothing gets read at that moment. The next time you open Full Count there's a
+      card on the Home screen telling you what's waiting, and one tap reads it and files
+      the game. That's the point of the whole thing: a screenshot never has to sit in your
+      camera roll. Send it over, then delete it off your phone. If you change your mind
+      before importing, Discard on that card throws the shared copies away.</p>
+    </section>
 
     <section>
       <h2>How does Full Count know which team and season a game belongs to?</h2>
@@ -362,10 +391,38 @@
       so if yours runs differently, the review screen lets you put the game in a different
       season or start a new one.</p>
 
-      <p>Importing a stack of games at once is fine. Confirm the first, and the ones that
-      match what it established go through without asking again. A game you already have
-      is skipped rather than added twice, and the summary at the end tells you how many
-      were already there.</p>
+      <p>Importing a stack of PDF exports at once is fine. Confirm the first, and the ones
+      that match what it established go through without asking again.</p>
+    </section>
+
+    <section>
+      <h2>Can I import more than one game at a time?</h2>
+
+      <p>Yes, a whole weekend in one go, from either kind of box score. Select several PDF
+      exports, or several games' worth of screenshots, and Full Count works down the
+      pile.</p>
+
+      <p>You don't have to sort the screenshots first. Every capture has the game printed
+      at the top, so the app puts them back into the games they came from, including two
+      games against the same opponent on the same day. Each game's screenshots get their
+      own review before anything saves. PDF exports work the way they always have: confirm
+      the first, and the ones matching what it established go through without stopping you
+      again, and a game you already have is skipped instead of added twice. Either way, a
+      summary at the end says what happened to each game.</p>
+
+      <h3>One player at a time, though</h3>
+
+      <p>An import files its game under one player. So if you track three daughters on the
+      same roster, that Saturday game gets imported three times, once for each of them.
+      The screenshots or the PDF are the same each time; you switch to the next player and
+      import again.</p>
+
+      <p>It works this way because a box score names every player on the roster and
+      nothing in the file says which of them you meant. Full Count would rather ask than
+      guess. On a PDF that names more than one of your players, it asks which one before
+      it reads anything, and you can hold that answer for the rest of the batch.
+      Screenshots go to the player you're looking at, or to the one you picked when you
+      shared them in.</p>
     </section>
 
     <section>
@@ -381,7 +438,9 @@
 
       <p>Two of yours on the same roster works too. When a box score names more than one
       player you track, Full Count asks which one the game belongs to rather than guessing,
-      and you can apply that answer to the rest of the batch.</p>
+      and you can apply that answer to the rest of the batch. It files that game under the
+      one player you picked, so a game both girls played gets imported once for each of
+      them. See the answer above on importing several games at once.</p>
 
       <p>You choose a sport, softball or baseball, when you add a player. The benchmark
       tables are different for the two, so the target lines match the game she's
@@ -399,6 +458,12 @@
       <p>Screenshots are read on your phone with Apple's built-in text recognition. Full
       Count keeps the text it recognized, meaning the names and numbers and where they sat
       on the page. It does not keep the images. Your photos never leave your phone.</p>
+
+      <p>When you share screenshots or a PDF into the app, Full Count holds those files in
+      its own storage on your phone until you import them or discard them. Once the game
+      is saved, the shared copies go away. A screenshot leaves behind only the recognized
+      text. A PDF box score is kept with the game it created, so its numbers can be read
+      again later without asking you for the file a second time.</p>
 
       <p>One thing worth knowing: a box score lists both teams, so an import brings in the
       other players' names and stats alongside your own player's, exactly as they were
