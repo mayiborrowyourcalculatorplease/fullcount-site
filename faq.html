@@ -7,7 +7,7 @@
 <link rel="icon" type="image/png" sizes="16x16" href="images/icon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="images/icon-180.png">
 <title>Full Count · Frequently Asked Questions</title>
-<meta name="description" content="Answers to common questions about Full Count: why stats appear where they do, where the target lines come from, and how to get a box score out of GameChanger.">
+<meta name="description" content="Answers to common questions about Full Count: why stats appear where they do, where the performance targets come from, and every way to import a box score from GameChanger.">
 <style>
   :root { color-scheme: light dark; }
   * { box-sizing: border-box; }
@@ -58,7 +58,7 @@
 
 <header class="hero">
   <h1>Frequently Asked Questions</h1>
-  <p class="lede muted">How Full Count decides what to show you, where the target lines
+  <p class="lede muted">How Full Count decides what to show you, where the performance targets
   come from, and how to get a box score out of GameChanger.</p>
   <p class="back"><a href="index.html">Back to Full Count</a></p>
 </header>
@@ -76,14 +76,14 @@
       <h3>Counting stats show up almost everywhere</h3>
       <p>Hits, strikeouts, walks, RBI, innings pitched, pitches thrown. These are just
       records of what happened, so they appear on a single game's box score, they add up
-      into season, tournament, and career totals, and they get plotted game by game on
+      into season and career totals, and they get plotted game by game on
       the charts.</p>
 
       <h3>Rate stats need a season to mean anything</h3>
       <p>Batting average, on-base percentage, slugging, ERA, and WHIP are all fractions,
       and a fraction with a tiny denominator is noise. One at bat and one hit is a 1.000
       average, which tells you nothing about your player. So these live on the season
-      dashboard, the tournament totals, the career totals, and the trend charts, where
+      dashboard, the career totals, and the trend charts, where
       enough games have accumulated for the number to settle down.</p>
       <p>Strike percentage is the one rate you will see on a single game, because a
       pitcher throws dozens of pitches in one outing. The denominator is already large by
@@ -91,11 +91,11 @@
 
       <div class="pair">
       <figure class="shot">
-        <img src="images/09-game-detail.png" width="1206" height="2622" alt="A single game's page showing that game's counting stats for the player.">
+        <img src="images/05-game-detail.png" width="1206" height="2622" alt="A single game's page showing that game's counting stats for the player.">
         <figcaption class="muted">One game: what happened, in counts.</figcaption>
       </figure>
       <figure class="shot">
-        <img src="images/07-season-summary.png" width="1206" height="2622" alt="Season summary dashboard showing accumulated totals alongside rate stats like ERA and WHIP.">
+        <img src="images/09-season-summary.png" width="1206" height="2622" alt="Season summary dashboard showing accumulated totals alongside rate stats like ERA and WHIP.">
         <figcaption class="muted">A season: rates, once the denominator is real.</figcaption>
       </figure>
       </div>
@@ -112,11 +112,6 @@
       than raw per-game totals alone. A four-inning outing and a six-inning outing are
       honestly comparable once the stat is expressed per inning.</p>
 
-      <h3>Tournament pages are short on purpose</h3>
-      <p>A tournament in Full Count is a cluster of games on the same dates, usually two
-      or three of them. A long grid of rate stats over three games would read as more
-      precision than the weekend can support, so the tournament totals stay brief.</p>
-
       <p>One list is entirely yours: the stat tiles on the Home tab. Settings lets you
       pick which stats sit there, from every pitching and batting stat the app tracks.</p>
     </section>
@@ -127,9 +122,9 @@
         <figcaption class="muted">The Home tiles are yours to choose in Settings.</figcaption>
       </figure>
 
-      <h2>Why do some charts have target lines and others don't?</h2>
+      <h2>Why do some charts have performance targets and others don't?</h2>
 
-      <p>Target lines are drawn only for rate stats. On the pitching side that means
+      <p>Performance targets are drawn only for rate stats. On the pitching side that means
       strike percentage, ERA, WHIP, K per inning, and BB per inning. On the batting side
       it means batting average, on-base percentage, slugging, OPS, strikeout rate, and
       walk rate.</p>
@@ -138,26 +133,26 @@
       Strike percentage means the same thing whether your player threw 40 pitches or 90.
       A raw count doesn't work that way. Six strikeouts in a game is outstanding in four
       innings and ordinary in seven, and it depends just as much on how many batters came
-      to the plate as on how she pitched. Nobody publishes a benchmark for "strikeouts
+      to the plate as on how she pitched. Nobody publishes a performance target for "strikeouts
       per game" at 12U, and if Full Count drew one, it would be making it up. So the
       counting-stat charts show your player's own line and nothing else.</p>
 
       <p>Two more things worth knowing about the lines you do see. They are specific to
       the age division and the sport, so a 12U softball season is measured against 12U
-      softball numbers and nothing else. And where no honest benchmark exists, the chart
+      softball numbers and nothing else. And where no honest performance target exists, the chart
       says so rather than inventing one. ERA is the clearest example: below 12U, unearned
       runs and scorekeeping judgment dominate the number, so the source tables give no
       ERA tiers at all and the chart tells you that instead of drawing a line.</p>
 
 
       <figure class="shot">
-        <img src="images/17-rate-vs-count.png" width="1206" height="2622" alt="Pitching charts showing K per Inning with green Good and Excellent target lines directly above a Strikeouts chart that has no target lines.">
+        <img src="images/21-rate-vs-count.png" width="1206" height="2622" alt="Pitching charts showing K per Inning with green Good and Excellent performance targets directly above a Strikeouts chart that has none.">
         <figcaption class="muted">Same stat, two forms. K per inning is comparable across games, so it carries targets. A raw strikeout count doesn't, so it stands alone.</figcaption>
       </figure>
 
       <figure class="diagram">
         <svg viewBox="0 0 640 260" role="img"
-             aria-label="Two panels comparing 10U and 12U softball targets. Strike percentage: at 10U the Good band runs from 58 to 62 percent and Excellent begins at 65 percent; at 12U the Good band shifts up to 60 to 63 percent while Excellent stays at 65 percent. ERA: at 10U there is no benchmark at all; at 12U Good runs from 0.31 to 0.46 earned runs per inning and Excellent is below 0.26.">
+             aria-label="Two panels comparing 10U and 12U softball targets. Strike percentage: at 10U the Good band runs from 58 to 62 percent and Excellent begins at 65 percent; at 12U the Good band shifts up to 60 to 63 percent while Excellent stays at 65 percent. ERA: at 10U there is no performance target at all; at 12U Good runs from 0.31 to 0.46 earned runs per inning and Excellent is below 0.26.">
           <style>
             .lbl { font: 500 13px -apple-system, system-ui, sans-serif;
                    fill: light-dark(#444, #bbb); }
@@ -205,7 +200,7 @@
           <text x="360" y="96" class="tick">0.4</text>
           <text x="360" y="150" class="tick">0.2</text>
 
-          <text x="410" y="118" class="none">No benchmark</text>
+          <text x="410" y="118" class="none">No target</text>
           <text x="410" y="136" class="none">at this level</text>
           <text x="410" y="214" class="div">10U</text>
 
@@ -220,7 +215,7 @@
         <figcaption class="muted">Real values from the app. Moving up a division shifts the strike percentage band and leaves Excellent where it is, while ERA gains targets at 12U that don't exist below it.</figcaption>
       </figure>
 
-      <p>A chart that spans more than one division steps its target line where the
+      <p>A chart that spans more than one division steps its performance target where the
       division changed, so an older season stays measured against the level your player
       was competing at. If you'd rather not see the lines at all, you can turn them off
       in Settings.</p>
@@ -235,7 +230,7 @@
       <h2>Where do the targets come from?</h2>
 
       <p>They are coaching-consensus tiers, assembled from the kinds of resources coaches
-      and families actually use: coaching guides, recruiting guidance, and the benchmark
+      and families actually use: coaching guides, recruiting guidance, and the target
       charts published by training sites. They are not official league data, and they are
       not measured averages of a real population of players. No governing body publishes
       that, which is exactly why the tiers had to be built this way.</p>
@@ -255,7 +250,7 @@
       looks. A hot weekend is a hot weekend.</p>
     </section>
 
-    <section>
+    <section id="importing">
       <h2>How do I export the box score from GameChanger?</h2>
 
       <p>The PDF export is the easiest import of all, when you have access to it.</p>
@@ -273,15 +268,15 @@
 
       <p>Two limits to be aware of. This is available in the GameChanger mobile app only,
       not on the web, and the "Export Stats" button appears only for accounts that have
-      been given access to it, which usually means team staff and administrators. If you
-      don't see the button, you haven't done anything wrong, and you don't need to ask
-      anyone for permission. Screenshots of the same box score work just as well, and the
+      been given access to it. GameChanger calls that level Team Staff. If you do not see
+      the button, you haven't done anything wrong, and you don't need to ask anyone for
+      permission. Screenshots of the same box score work just as well, and the
       next answer covers how to take them.</p>
     </section>
 
     <section>
       <figure class="shot">
-        <img src="images/16-help-importing.png" width="1206" height="2622" alt="The app's own help page, listing the four steps to the GameChanger box score and the screenshot tips.">
+        <img src="images/20-help-importing.png" width="1206" height="2622" alt="The app's own help page, listing the four steps to the GameChanger box score and the screenshot tips.">
         <figcaption class="muted">The same instructions live in the app, under Settings.</figcaption>
       </figure>
 
@@ -311,10 +306,56 @@
       <p>The same guidance is in the app, under Settings, if you'd rather have it on your
       phone at the field.</p>
           <figure class="shot">
-        <img src="images/14-import-verify.png" width="1206" height="2622" alt="The import review screen reporting that the hits column is one short of the box score's own total, naming the rows to check.">
+        <img src="images/16-import-verify.png" width="1206" height="2622" alt="The import review screen reporting that the hits column is one short of the box score's own total, naming the rows to check.">
         <figcaption class="muted">A complete table is what makes this check possible: every column is compared to the box score's own totals before anything is saved.</figcaption>
       </figure>
 </section>
+
+    <section>
+      <h2>Do I have to save the screenshot to my phone first?</h2>
+
+      <p>No. Take the screenshot in GameChanger, tap the preview that appears in the corner, then choose Full Count. The game waits on the Home screen until you import it. When you are finished with the screenshot you can either keep it or dismiss it, and dismissing it means it was never saved to your phone at all.</p>
+    </section>
+
+    <section>
+      <h2>Where can the files come from?</h2>
+
+      <p>From your phone, or from cloud storage. Google Drive is the one we test against directly. Other storage apps that appear alongside your files, or that offer a share option of their own, should behave the same way, but we have not tested every one and will not claim more than we know.</p>
+    </section>
+
+    <section>
+      <h2>Can I import a whole weekend at once?</h2>
+
+      <p>Yes, and screenshots and PDFs can go in together as a single batch. You choose the player once, and a single summary at the end reports what happened to each game. The screenshots do not need sorting first, because each one names its own game, including two meetings with the same opponent on the same day.</p>
+    </section>
+
+    <section>
+      <h2>Why did it only take some of my files?</h2>
+
+      <p>Sending files straight into an app is capped at twelve at a time. That cap belongs to the iPhone rather than to Full Count. Full Count reports how many were left out and points you to the ZIP route. Choosing screenshots from inside the app carries the same twelve, so a ZIP is the way past it either way. The cap does not apply to files inside a ZIP.</p>
+    </section>
+
+    <section>
+      <h2>What is Import from ZIP?</h2>
+
+      <p>A ZIP file can hold screenshots, PDF box scores, or both. There are two ways to send one: share the ZIP to Full Count from wherever it is stored, or open Full Count, tap Import and choose Import from ZIP.</p>
+
+      <p>Full Count unpacks it and treats the contents exactly as though you had sent them individually, so choosing the player, reviewing a game and reading the summary all work the same. A ZIP has no limit on how many files it holds, which also makes it the answer for cloud storage that will only share one file at a time.</p>
+    </section>
+
+    <section>
+      <h2>How much fits in one ZIP?</h2>
+
+      <p>More than a season. One ZIP can be up to 80 MB, which works out to roughly 300 screenshots, or about 150 games. PDFs are far smaller, so around 2,500 of those will fit. For a sense of scale, three seasons of one family's screenshot folders came to 14 MB in total.</p>
+
+      <p>There is no limit on the number of files, only on the total size. A ZIP over 80 MB is refused before any of it is read, with a request to send the games as a few smaller ZIPs or to import them without zipping. The same ceiling applies whether you share a ZIP in from another app or choose Import from ZIP inside Full Count.</p>
+    </section>
+
+    <section>
+      <h2>Are there ZIP files it will not take?</h2>
+
+      <p>Password protected ones, ones larger than 4 GB, and ones over the 80 MB ceiling above. Full Count reports which of those applies and stops there rather than importing half a batch. Other archive formats, such as RAR and 7z, are not supported.</p>
+    </section>
 
   </div>
 </main>

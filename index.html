@@ -7,7 +7,7 @@
 <link rel="icon" type="image/png" sizes="16x16" href="images/icon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="images/icon-180.png">
 <title>Full Count · Get more out of GameChanger</title>
-<meta name="description" content="Full Count is an iOS app that turns GameChanger box scores into season-long trend charts for your player. No team administrator access required.">
+<meta name="description" content="Full Count is an iOS app that turns GameChanger box scores into season-long trend charts for your player. No Team Staff access required.">
 <style>
   :root { color-scheme: light dark; }
   * { box-sizing: border-box; }
@@ -67,9 +67,9 @@
 <header class="hero">
   <h1>Full Count</h1>
   <p class="tagline">Get more out of GameChanger.</p>
-  <p class="lede muted">Full Count is an iOS app for softball and baseball families. It turns
-  those box scores into season-long trend charts for your player, so progress is
-  visible while the season is still underway.</p>
+  <p class="lede muted">GameChanger records the game. Full Count turns those records into a
+  picture of how your player is developing, with trends over time, performance targets set by
+  age division, and a stat view you arrange yourself.</p>
   <a class="cta" href="mailto:fullcountstattracker@gmail.com?subject=Full%20Count%20beta">Request a beta invitation</a>
   <p class="cta-note muted">Full Count is currently in beta through TestFlight. Email us to request an invitation.</p>
 </header>
@@ -80,88 +80,85 @@
 
     <section>
       <div class="copy">
-      <h2>Import without administrator access</h2>
-      <p>You don't need to manage the team's GameChanger account to keep your player's
-      records. Capture screenshots of the box score directly from the GameChanger app,
-      and Full Count reads them, checks every number, and builds the game. Any data you
-      can see, you can keep. Rows clipped at the edge of the screen are recovered rather
-      than discarded. For an even easier import, use the GameChanger box score PDF
-      export.</p>
+      <h2>See progress take shape</h2>
+      <p>A single box score tells you how one game went. Full Count charts every game your player has recorded, so you can see the direction they are heading.</p>
+      <p>Every rate stat gets its own chart across the full history: strike percentage, WHIP, ERA, strikeouts and walks per inning on the pitching side, and batting average, on-base percentage, slugging and OPS at the plate. Once a second season is complete, the same stats are plotted season over season, one point per season, so a year of work reads as a single line.</p>
+      <p>The charts narrow to whatever span you want to look at: a full career, one season, the last ten games, or any date range. The season totals follow the same selection.</p>
       </div>
       <figure class="inline-shot">
-        <img src="images/13-import-menu.png" width="1206" height="2622"
-             alt="Home tab with the Import menu open, offering Import from PDF and Import from Screenshots.">
-        <figcaption class="muted">Two ways in: PDF export or screenshots.</figcaption>
+        <img src="images/08-season-trends.png" width="1206" height="2622"
+             alt="Season Summary showing trends across seasons, with one point per season for each rate stat.">
+        <figcaption class="muted">One point per season, so a year of work reads as a single line.</figcaption>
       </figure>
     </section>
 
     <section>
       <div class="copy">
-      <h2>Every number is double-checked</h2>
-      <p>When Full Count reads a screenshot, it doesn't ask you to trust the reading.
-      Every number is cross-checked against the box score's own team totals, so a
-      misread digit is caught before anything is saved. The review names the
-      discrepancy exactly, hits one short of the printed total, for instance, and
-      points to the rows worth checking so you can fix the cell in place. In the rare
-      case where the box score genuinely prints numbers that don't add up, you can
-      accept it as printed instead.</p>
+      <h2>Standout games, found for you</h2>
+      <p>Full Count reads every game as it is imported and marks the ones that stand out, so a career day is never buried under a season of ordinary box scores.</p>
+      <p>At the plate that means a home run game, three or more hits, a perfect day with a hit in every at bat, and the cycle. In the circle it means a no-hit or perfect outing, with a minimum workload attached so that a single relief out cannot claim either.</p>
+      <p>Best Performances gathers them on one screen, batting and pitching behind a toggle, across the whole career rather than the current season alone.</p>
       </div>
       <figure class="inline-shot">
-        <img src="images/14-import-verify.png" width="1206" height="2622"
-             alt="The import review screen flagging that the hits column is one short of the box score's own total, naming the rows to check, with buttons to correct the value or accept the box score as printed.">
-        <figcaption class="muted">A misread digit is caught and named before the game is saved.</figcaption>
+        <img src="images/18-best-performances-batting.png" width="1206" height="2622"
+             alt="Best Performances on the batting side, listing a perfect day at the plate, two home run games and a multi-hit game.">
+        <figcaption class="muted">Standout games collected in one place, batting and pitching both.</figcaption>
       </figure>
     </section>
 
     <section>
       <div class="copy">
-      <h2>Targets matched to the age division</h2>
-      <p>The tiers come from coaching consensus for each age division and sport, with
-      separate softball and baseball tables from 8U through 18U. Full Count plots each
-      stat game by game, and on key charts it draws the division's targets alongside
-      the data: a green band marks Good, and a dashed line marks Excellent.</p>
-      <p>Each season keeps the targets for the division it was played in, so earlier
-      seasons remain measured against the level your player was competing at.</p>
+      <h2>Stay competitive with performance targets</h2>
+      <p>A .320 average means one thing at 10U and something quite different at 14U. Full Count draws performance targets on the game log charts for the age division a season was actually played in, so every number is read against the level your player was competing at.</p>
+      <p>Two tiers are marked, Good and Excellent beyond it. They cover strike percentage, ERA, WHIP, strikeouts and walks per inning, batting average, on-base percentage, slugging, OPS and plate discipline, with separate softball and baseball tables from 8U through 18U.</p>
+      <p>The targets travel with the season, so an earlier season is never re-graded against a standard it was not played under. Where no honest target exists for a stat at a given age, the chart says so rather than showing a number nobody stands behind. The tiers reflect coaching consensus rather than published league data, because no league publishes any.</p>
       </div>
       <figure class="inline-shot">
         <img src="images/12-game-log-pitching.png" width="1206" height="2622"
-             alt="Season game log with pitching charts. The strike percentage chart climbs from 58 to 74 across the spring, with a green Good band at 58 to 62 percent and a dashed Excellent line at 65 percent.">
-        <figcaption class="muted">Good and Excellent target lines drawn for the season's division.</figcaption>
+             alt="Season game log with pitching charts. The strike percentage chart climbs across the spring, with a green Good band and a dashed Excellent line.">
+        <figcaption class="muted">Good and Excellent performance targets drawn for the season's division.</figcaption>
       </figure>
     </section>
 
     <section>
       <div class="copy">
-      <h2>Season, tournament, and career views</h2>
-      <p>A single import feeds every view: a season dashboard, a game-by-game log,
-      tournaments grouped automatically by date, and career charts spanning every team
-      and season. Game lists lead with the final score and the win or loss, and Best
-      Performances collects standout games, batting and pitching alike, in one place.</p>
+      <h2>Easy box score import</h2>
+      <p>Importing a game into Full Count takes one step. Send the box score and choose your player. The game is filed with its team, its season and its opponent already worked out, and it appears immediately in the charts, the season totals and Best Performances.</p>
+      <p>Two kinds of box score work. If you hold Team Staff access in GameChanger, you can export the game as a PDF. If you do not, screenshots of the box score are enough on their own, which means you never need anyone's permission to keep a full record of your own player's season.</p>
+      <p>Screenshots do not have to be sorted or renamed first. Each one carries its game at the top, so a tournament's worth of them return to the games they came from, including two meetings with the same opponent on the same day.</p>
+      <p>Full Count is deliberately flexible about how files arrive: one at a time or in bulk, loose or gathered into a ZIP, PDFs or screenshots or a mixture of the two, from your phone or from cloud storage. <a href="faq.html#importing">Every way to import is covered in the questions and answers</a>.</p>
       </div>
       <figure class="inline-shot">
-        <img src="images/02-trends.png" width="1206" height="2622"
-             alt="Trends tab showing career charts of a player's stats plotted across every season.">
-        <figcaption class="muted">Career charts span every team and season.</figcaption>
+        <img src="images/15-import-review-matched.png" width="1206" height="2622"
+             alt="The import review screen with a green banner reading Matched to an existing team and season, above the game details and the player's batting line.">
+        <figcaption class="muted">A game that matches a team and season you already have goes straight in.</figcaption>
+      </figure>
+    </section>
+
+    <section>
+      <div class="copy">
+      <h2>A stat view that is yours</h2>
+      <p>Choose which stats lead the Home screen, and whether stat pages open on batting or pitching first. A pitcher's family can put ERA and strike percentage front and centre. A slugger's can lead with average and total bases.</p>
+      <p>Game lists lead with the score and the result, so scrolling a season reads the way the season actually went. Your Home tiles, your batting or pitching default and your performance target preference follow your Apple ID, so replacing a phone does not start you over.</p>
+      </div>
+      <figure class="inline-shot">
+        <img src="images/01-home.png" width="1206" height="2622"
+             alt="The Full Count Home screen showing the latest season card, a row of chosen stat tiles, and the Explore grid.">
+        <figcaption class="muted">The stats you care about, where you want them.</figcaption>
       </figure>
     </section>
 
     <section>
       <div class="copy">
       <h2>Family sharing through iCloud</h2>
-      <p>Share a player once and every phone stays current. Imports appear on each
-      family member's device automatically, with a notification when someone adds a
-      game. Access is granted per person: View Only for relatives who follow along, or
-      View and Edit for a second parent who imports games. Full Count requires no
-      account and relies on no third-party services; your data is stored on your device
-      and in your own iCloud.</p>
+      <p>Share a player once and every phone stays current. Imports appear on each family member's device automatically, with a notification when someone adds a game. Access is granted per person: View Only for relatives who follow along, or View and Edit for a second parent who imports games. Full Count requires no account and relies on no third-party services; your data is stored on your device and in your own iCloud.</p>
       </div>
       <figure class="inline-shot">
-        <img src="images/15-family-sharing.png" width="1206" height="2622"
-             alt="Players tab showing four athletes: one with a pending invitation, one not shared, one shared with this family member, and one shared and accepted in green.">
+        <img src="images/19-family-sharing.png" width="1206" height="2622"
+             alt="Players tab showing four players: one with a pending invitation, one not shared, one shared with this family member, and one shared and accepted in green.">
         <figcaption class="muted">Sharing status at a glance: invited, accepted, or shared with you.</figcaption>
       </figure>
     </section>
-
   </div>
 
 </main>
