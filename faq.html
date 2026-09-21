@@ -87,7 +87,7 @@
       enough games have accumulated for the number to settle down.</p>
       <p>Strike percentage is the one rate you will see on a single game, because a
       pitcher throws dozens of pitches in one outing. The denominator is already large by
-      the time she walks off the field.</p>
+      the time the outing is over.</p>
 
       <div class="pair">
       <figure class="shot">
@@ -112,8 +112,17 @@
       than raw per-game totals alone. A four-inning outing and a six-inning outing are
       honestly comparable once the stat is expressed per inning.</p>
 
+      <h3>Some stats depend on how the game was imported</h3>
+      <p>Fielding and catching stats come from GameChanger CSV exports, which carry them
+      when a box score does not. Run support, the runs your player's team scored in the
+      innings they pitched from the first out to the last, works the other way. It needs the
+      inning-by-inning line score, which a box score prints and a CSV leaves out, so it fills
+      in for games imported from a PDF or screenshots. Where a game cannot supply a stat,
+      Full Count leaves it blank. It never shows a zero it did not read.</p>
+
       <p>One list is entirely yours: the stat tiles on the Home tab. Settings lets you
-      pick which stats sit there, from every pitching and batting stat the app tracks.</p>
+      pick which stats sit there, from every batting, pitching, fielding and catching stat
+      the app tracks.</p>
     </section>
 
     <section id="standout">
@@ -126,14 +135,14 @@
       at bat, and hitting for the cycle, which is a single, a double, a triple and a home run
       in the same game.</p>
 
-      <p>In the circle: a no-hit outing, and a perfect outing, which allows no hits, no walks
+      <p>On the mound or in the circle: a no-hit outing, and a perfect outing, which allows no hits, no walks
       and no home runs. Both come with a minimum workload. The outing has to cover at least
-      three innings, or at least one full inning when your player was her team's only pitcher,
+      three innings, or at least one full inning when your player was the team's only pitcher,
       since a dominant game that ends early on the run rule is the opposite of a short relief
       appearance. A single out with no hits allowed is not a standout outing.</p>
 
       <p>In the field: a triple play, a double play, and an errorless game with at least four
-      chances, so a quiet afternoon with nothing hit her way does not count as a clean one.</p>
+      chances, so a quiet afternoon with nothing hit their way does not count as a clean one.</p>
 
       <p>Behind the plate: a pickoff, a game with two or more runners thrown out stealing, and
       a clean game with no passed balls over at least five innings caught.</p>
@@ -160,7 +169,7 @@
       Strike percentage means the same thing whether your player threw 40 pitches or 90.
       A raw count doesn't work that way. Six strikeouts in a game is outstanding in four
       innings and ordinary in seven, and it depends just as much on how many batters came
-      to the plate as on how she pitched. Nobody publishes a performance target for "strikeouts
+      to the plate as on how your player pitched. Nobody publishes a performance target for "strikeouts
       per game" at 12U, and if Full Count drew one, it would be making it up. So the
       counting-stat charts show your player's own line and nothing else.</p>
 
@@ -250,7 +259,9 @@
       <p>One note on the ERA label. Full Count plots earned runs per inning rather than a
       traditional scaled ERA, because youth games run anywhere from four to six innings
       and a seven-inning assumption would distort every number. The targets are converted
-      to match.</p>
+      to match. If you would rather read the traditional figure, Settings has a Rate Stats
+      choice under Stat Calculations. Per game scales ERA, run support, strikeouts and walks
+      to the number of innings your league plays, and the targets scale with them.</p>
     </section>
 
     <section>
@@ -304,7 +315,7 @@
     <section>
       <figure class="shot">
         <img src="images/20-help-importing.png" width="1206" height="2622" alt="The app's own help page, listing the four steps to the GameChanger box score and the screenshot tips.">
-        <figcaption class="muted">The same instructions live in the app, under Settings.</figcaption>
+        <figcaption class="muted">The same instructions live in the app, under Help.</figcaption>
       </figure>
 
       <h2>How do I take good screenshots of a box score?</h2>
@@ -332,8 +343,8 @@
         until you're ready to import them. (See the next question for details.)</li>
       </ul>
 
-      <p>The same guidance is in the app, under Settings, if you'd rather have it on your
-      phone at the field.</p>
+      <p>The same guidance is in the app, under Help in the gear menu, if you'd rather have
+      it on your phone at the field.</p>
           <figure class="shot">
         <img src="images/16-import-verify.png" width="1206" height="2622" alt="The import review screen reporting that the hits column is one short of the box score's own total, naming the rows to check.">
         <figcaption class="muted">A complete table is what makes this check possible: every column is compared to the box score's own totals before anything is saved.</figcaption>
@@ -361,7 +372,7 @@
     <section>
       <h2>Can I import a whole weekend at once?</h2>
 
-      <p>Yes, and all file types, CSVs, PDFs and screenshots, can go in the ZIP file together as a single batch. You choose the player once, and a single summary at the end reports what happened to each game. The screenshots do not need sorting first, because each one names its own game, including two meetings with the same opponent on the same day.</p>
+      <p>Yes, and all file types, CSVs, PDFs and screenshots, can go in the ZIP file together as a single batch. You choose the player once, and a single summary at the end reports what happened to each game. The screenshots do not need sorting first, because each one names its own game, including two meetings with the same opponent on the same day. The CSVs go last, and each one asks for its date and opponent.</p>
     </section>
 
     <section>
@@ -373,7 +384,7 @@
     <section>
       <h2>What is Import from ZIP?</h2>
 
-      <p>A ZIP file can hold screenshots, PDF box scores, or both. There are two ways to send one: share the ZIP to Full Count from wherever it is stored, or open Full Count, tap Import and choose Import from ZIP.</p>
+      <p>A ZIP file can hold screenshots, PDF box scores and CSV exports, in any mix. There are two ways to send one: share the ZIP to Full Count from wherever it is stored, or open Full Count, tap Import and choose Import from ZIP.</p>
 
       <p>Full Count unpacks it and treats the contents exactly as though you had sent them individually, so choosing the player, reviewing a game and reading the summary all work the same. A ZIP has no limit on how many files it holds, which also makes it the answer for cloud storage that will only share one file at a time.</p>
     </section>
@@ -402,30 +413,38 @@
       <h2>What does the review look like when it does ask?</h2>
 
       <p>One form with everything Full Count read for your player: both teams, the score, the date, the batting stats and the pitching stats. Anything doubtful is outlined, and the reason is written at the top in plain words, such as "R is 1 short: the players' R adds up to 6 but the screenshot's team total is 7." Tap the box and type the right number, or leave it as printed if the box score is what's wrong. Everything else on the form stays quiet.</p>
+
+      <p>That is the review for screenshots. A PDF or CSV review is shorter, because a file has nothing to misread. It shows your player's stats, and a row reading "Full box score" opens the whole lineup, so you can confirm it is the game you think it is before you import.</p>
     </section>
 
     <section>
       <h2>A teammate's numbers didn't add up. Why did the game import anyway?</h2>
 
-      <p>Because your player's stats are what Full Count keeps, and they read cleanly. A difference on another player's row never stops an import. The import summary mentions it and the game is listed under Check Imported Games in Settings, so you can look when you have a minute, or open the game and tap Edit. If you would rather not hear about other players' rows, turn off "Mention totals that don't add up on other players' lines" under Importing in Settings.</p>
+      <p>Because your player's stats are what Full Count keeps, and they read cleanly. A difference on another player's row never stops an import. The import summary mentions it and the game is listed under Check Imported Games, on the Maintenance page of Settings, so you can look when you have a minute, or open the game and tap Edit. If you would rather not hear about other players' rows, turn off "Mention totals that don't add up on other players' lines" under Importing in Settings.</p>
     </section>
 
     <section>
       <h2>Can I fix a game after it's in?</h2>
 
-      <p>Yes. Open the game and tap Edit. The same form comes up with the team, opponent, score, date, batting stats and pitching stats, all editable. Win or loss follows from the score. Change the team and the game moves to that team, one your player already has or a new one you type. Change the date and it moves to the right season.</p>
+      <p>Yes. Open the game and tap Edit. The same form comes up with the team, opponent, score, date, and the batting, pitching, fielding and catching stats, all editable. Win or loss follows from the score. Change the team and the game moves to that team, one your player already has or a new one you type. Change the date and it moves to the right season.</p>
     </section>
 
     <section>
       <h2>Can I add a game that has no box score?</h2>
 
-      <p>Yes. Tap Import on the Home screen and choose Enter a Game by Hand. Pick the team from the ones your player already has or type a new one, then the opponent, the date, the score, and the batting or pitching stats you have. A typed game needs a date, both teams and at least one set of stats; anything else can stay empty. It shows up everywhere an imported game does.</p>
+      <p>Yes. Tap Import on the Home screen and choose Enter a Game by Hand. Pick the team from the ones your player already has or type a new one, then the opponent, the date, the score, and whatever batting, pitching, fielding or catching stats you have. A typed game needs a date, both teams and at least one set of stats; anything else can stay empty. It shows up everywhere an imported game does.</p>
     </section>
 
     <section>
-      <h2>The app said Updating stats when I opened it. What was that?</h2>
+      <h2>I already imported the box score. Can a CSV add fielding and catching to that game?</h2>
 
-      <p>A one-time re-read. Full Count keeps what it read from every box score, so when an update improves the reader, the next launch re-reads the games you already have and shows its progress while it works. Nothing is needed from you, and it happens once, on the first launch after an update that changed the reader. A game typed by hand is left as you typed it, and a game imported before Full Count kept the file can't be re-read; Check Imported Games says which those are.</p>
+      <p>Yes. Import the game's CSV for the same player. Full Count matches it to the game you already have by its lineup: the score, the team totals and the players' stats all have to agree. The review names the game it found, with the date and opponent already filled in, and importing adds the fielding and catching stats to that game. No second copy is made. If the game already holds that CSV, Full Count says so and changes nothing.</p>
+    </section>
+
+    <section>
+      <h2>The app said Updating player data when I opened it. What was that?</h2>
+
+      <p>One of two things, and neither needs anything from you. Full Count keeps what it read from every box score, so when an update improves the reader, the next launch re-reads the games you already have. A banner at the top counts them off, and your stats show right away and refresh as each game is redone. It happens once, on the first launch after an update that changed the reader. On a new phone or a fresh install, the same banner shows while your games come down from iCloud. A game typed by hand is left as you typed it, and a game imported before Full Count kept the file can't be re-read; Check Imported Games says which those are.</p>
     </section>
 
   </div>
