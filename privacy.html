@@ -19,7 +19,7 @@
 </head>
 <body>
 <h1>Full Count Privacy Policy</h1>
-<p class="updated">Last updated: August 23, 2026</p>
+<p class="updated">Last updated: September 21, 2026</p>
 
 <h2>Overview</h2>
 <p>Full Count ("the App") is a mobile application that helps players and families track and visualize youth sports statistics. This policy explains what information the App collects, how it is used, and how it is stored.</p>
@@ -31,13 +31,16 @@
   <li>Jersey number</li>
   <li>Team name</li>
   <li>Birth year</li>
-  <li>Game statistics (batting and pitching stats)</li>
+  <li>Game statistics (batting, pitching, fielding and catching stats, and the game's score by inning)</li>
   <li>Player handedness (bats/throws right or left)</li>
   <li>An optional player photo, if the user adds one</li>
 </ul>
 <p>Imported box scores also include the names, jersey numbers, and game statistics of the other players in that game, on both teams, exactly as displayed publicly at the game and in GameChanger.</p>
 <p>When a game is imported from screenshots, the images are read entirely on the user's device using Apple's built-in text recognition. <strong>The App stores the recognized text (names, numbers, and their positions on the page), never the screenshots themselves.</strong> The user's photos never leave their device and are not stored by the App.</p>
-<p>We do not collect email addresses, precise location data, government identification numbers, or payment information.</p>
+<p>When a game is imported from a PDF box score, the App keeps that PDF file with the game it created, so the game can be read again later without asking the user for the file a second time. It is stored the same way as the rest of the user's data, described under Data Storage and Sharing below.</p>
+<p>When a game is imported from a GameChanger CSV export, the App keeps that CSV file with the game in the same way, so the game can be read again later without asking the user for the file a second time. The CSV does not include the game's date or the opponent's name; the user enters both on a review screen, and they are stored with the game like any other game detail.</p>
+<p>Screenshots, PDF box scores and CSV exports may also be sent to the App from another app using the iOS share sheet. Files sent this way are written to the App's own storage on the user's device and stay there until the user imports or discards them. They are not transmitted anywhere while they wait. Once the game is imported, those copies are removed.</p>
+<p>We do not collect precise location data, government identification numbers, or payment information. The App never asks for the user's own email address. The one place an email address or phone number is handled is when the user invites someone to a shared player, described under Data Storage and Sharing below.</p>
 
 <h2>How Information Is Used</h2>
 <p>The information collected is used solely to provide the App's core features, including:</p>
@@ -51,10 +54,12 @@
 <h2>Data Storage and Sharing</h2>
 <p>Full Count uses Apple's CloudKit framework to store and, where applicable, sync data across a user's own devices. CloudKit is part of Apple's infrastructure and operates under Apple's own privacy and security practices.</p>
 <p>Users may also choose to share a specific player's stats and profile with another user of the App using CloudKit sharing. This sharing is initiated and controlled by the user: the recipient can only see the specific player data that has been shared with them. The sharing user chooses each participant's access level when inviting them, either view only or view and edit, and may change a participant's access level, remove a participant, or revoke access entirely at any time within the App. When a shared player gains a new game, the App may show a notification on the sharing participants' devices; these notifications are generated locally on each device.</p>
+<p>To invite someone, the user types that person's email address or phone number, or chooses it from their contacts. The contact picker is provided by iOS: the App does not request access to the user's contacts and receives only the one email address or phone number the user selects. The App passes it to Apple's CloudKit to confirm that an Apple Account is registered to it and to address the invitation. It is kept with the share in the user's own iCloud, where the App reads it back to list who the player is shared with, and in a diagnostic log kept on the user's device. It is not sent to the developer or to anyone else. The invitation itself is sent by the user, through Messages, Mail, or another app of their choosing.</p>
+<p>The user's display preferences, such as which statistics the Home screen shows, are stored in the user's own iCloud as well, so they carry over to a new device.</p>
 <p>The App does not use third-party analytics, advertising, or tracking services. No data collected by the App is sold or shared with third parties for marketing or advertising purposes.</p>
 
 <h2>Children's Information</h2>
-<p>Because Full Count is designed for use in youth sports contexts, some information (such as a player's name, birth year, and statistics) may relate to a minor. This information is entered by a parent, coach, or other authorized user of the App, from information that is publicly displayed at the game and in GameChanger's box scores: either a PDF export (available to accounts with Team Staff access) or the user's own screenshots of the box score they can already see. All of it is used only for the statistical and organizational purposes described above, and it remains in the user's own iCloud unless the user explicitly shares a player.</p>
+<p>Because Full Count is designed for use in youth sports contexts, some information (such as a player's name, birth year, and statistics) may relate to a minor. This information is entered by a parent, coach, or other authorized user of the App, from information that is publicly displayed at the game and in GameChanger's box scores: a PDF or CSV export from GameChanger, or the user's own screenshots of the box score they can already see. All of it is used only for the statistical and organizational purposes described above, and it remains in the user's own iCloud unless the user explicitly shares a player.</p>
 
 <h2>Data Retention and Deletion</h2>
 <p>Users may delete player records and associated statistics within the App at any time. Deleting a record removes the associated data from the user's account. Revoking a CloudKit share removes the recipient's access to that shared data.</p>
