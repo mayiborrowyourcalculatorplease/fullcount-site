@@ -114,9 +114,9 @@
 
       <h3>Some stats depend on how the game was imported</h3>
       <p>Fielding and catching stats come from GameChanger CSV exports, which carry them
-      when a box score does not. Run support, the runs your player's team scored in the
-      innings they pitched from the first out to the last, works the other way. It needs the
-      inning-by-inning line score, which a box score prints and a CSV leaves out, so it fills
+      when a box score does not. Run support, the average number of runs your player's team scored in the
+      games they pitched all innings, works the other way. It needs the final score and
+      who pitched, which a box score carries and a CSV leaves out, so it fills
       in for games imported from a PDF or screenshots. Where a game cannot supply a stat,
       Full Count leaves it blank. It never shows a zero it did not read.</p>
 
@@ -260,7 +260,7 @@
       traditional scaled ERA, because youth games run anywhere from four to six innings
       and a seven-inning assumption would distort every number. The targets are converted
       to match. If you would rather read the traditional figure, Settings has a Rate Stats
-      choice under Stat Calculations. Per game scales ERA, run support, strikeouts and walks
+      choice under Stat Calculations. Per game scales ERA, strikeouts and walks
       to the number of innings your league plays, and the targets scale with them.</p>
     </section>
 

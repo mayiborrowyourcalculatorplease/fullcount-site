@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" sizes="32x32" href="images/icon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/icon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="images/icon-180.png">
+<title>Full Count · Stats Explained</title>
+<meta name="description" content="Every stat Full Count shows, what it measures, how it is worked out, and whether you want it high or low.">
+<style>
+  :root { color-scheme: light dark; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    line-height: 1.6; margin: 0;
+  }
+  a { color: #0a66c2; color: light-dark(#0a66c2, #6cb4f5); }
+  .muted { color: #555; color: light-dark(#555, #a8a8a8); }
+  main { max-width: 62rem; margin: 0 auto; padding: 0 1.25rem 2rem; }
+
+  .hero { text-align: center; padding: 3.5rem 1.25rem 1.5rem; }
+  .hero h1 { font-size: 2.2rem; margin: 0 0 0.25rem; }
+  .hero p.lede { max-width: 34rem; margin: 0 auto 1rem; }
+  .back { font-size: 0.9rem; }
+
+  .faq { max-width: 42rem; margin: 0 auto; }
+  .faq section { margin: 0 0 2.5rem; }
+  .faq h2 { font-size: 1.5rem; margin: 0 0 0.5rem; }
+  .faq h3 { font-size: 1.05rem; margin: 2rem 0 0.35rem; text-transform: uppercase; letter-spacing: 0.04em; }
+  .faq h3 { color: #555; color: light-dark(#555, #a8a8a8); }
+  .faq p { margin: 0 0 0.85rem; }
+
+  .search { margin: 0 0 1.5rem; }
+  .search input {
+    width: 100%; font: inherit; padding: 0.6rem 0.9rem; border-radius: 0.6rem;
+    border: 1px solid #bbb; border-color: light-dark(#bbb, #555);
+    background: transparent; color: inherit;
+  }
+  .index { font-size: 0.9rem; margin: 0 0 1.5rem; }
+  .index p { margin: 0 0 0.4rem; }
+
+  .stat { padding: 1rem 0 0.5rem; border-top: 1px solid #ddd; border-top-color: light-dark(#ddd, #3a3a3a); }
+  .stat h4 { font-size: 1.15rem; margin: 0 0 0.35rem; }
+  .stat .abbr { font-weight: 700; }
+  .stat .name { font-weight: 400; margin-left: 0.4rem; }
+  .stat .definition { font-weight: 600; }
+  .stat .formula code {
+    display: inline-block; padding: 0.5rem 0.75rem; border-radius: 0.5rem;
+    background: #f1f1f1; background: light-dark(#f1f1f1, #262626); font-size: 0.95rem;
+  }
+  .stat .where { font-size: 0.9rem; }
+  .pill {
+    display: inline-block; font-size: 0.8rem; font-weight: 600; padding: 0.1rem 0.6rem;
+    border-radius: 999px; background: #e8e8e8; background: light-dark(#e8e8e8, #333);
+  }
+  .pill.higherIsBetter { background: #dff3e4; background: light-dark(#dff3e4, #1f3a29); }
+  .pill.lowerIsBetter { background: #e3edf9; background: light-dark(#e3edf9, #1e2d42); }
+  .stat.hidden { display: none; }
+  .none { display: none; }
+  .none.shown { display: block; }
+
+  .closing { text-align: center; padding: 1rem 1.25rem 3rem; }
+  .closing p { max-width: 32rem; margin: 0 auto 1.5rem; }
+  .cta {
+    display: inline-block; padding: 0.7rem 1.5rem; border-radius: 0.6rem;
+    background: #0a66c2; color: #fff; text-decoration: none; font-weight: 600;
+  }
+
+  footer {
+    text-align: center; padding: 2rem 1.25rem 3rem; font-size: 0.9rem;
+    border-top: 1px solid #ddd; border-top-color: light-dark(#ddd, #3a3a3a);
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <h1>Full Count Stats</h1>
+  <p class="lede muted">Every stat Full Count shows, what it measures, how it is worked out,
+  and whether you want it high or low. The same list is in the app under Help.</p>
+  <p class="back"><a href="index.html">Back to Full Count</a> · <a href="faq.html">FAQ</a></p>
+</header>
+
+<main>
+  <div class="faq">
+
+    <div class="search">
+      <label class="muted" for="stat-search">Find a stat</label>
+      <input id="stat-search" type="search" placeholder="Stat name or abbreviation, like OBP or strikeouts" autocomplete="off">
+    </div>
+
+    <p class="none" id="no-match">No stat matches that. Try the abbreviation printed on the box score.</p>
+
+<nav class="index" aria-label="Every stat">
+  <p><strong>Batting</strong> <a href="#batting-average">AVG</a> · <a href="#batting-onBasePercentage">OBP</a> · <a href="#batting-sluggingPercentage">SLG</a> · <a href="#batting-onBasePlusSlugging">OPS</a> · <a href="#batting-atBats">AB</a> · <a href="#batting-gamesPlayed">GP</a> · <a href="#batting-hits">H</a> · <a href="#batting-runsBattedIn">RBI</a> · <a href="#batting-runs">R</a> · <a href="#batting-totalBases">TB</a> · <a href="#batting-doubles">2B</a> · <a href="#batting-triples">3B</a> · <a href="#batting-homeRuns">HR</a> · <a href="#batting-runsCreated">RC</a> · <a href="#batting-weightedRunsCreated">wRC</a> · <a href="#batting-walks">BB</a> · <a href="#batting-strikeouts">SO</a> · <a href="#batting-strikeoutRate">K Rate</a> · <a href="#batting-walkRate">BB Rate</a> · <a href="#batting-hitByPitch">HBP</a> · <a href="#batting-sacrifices">SAC</a> · <a href="#batting-stolenBases">SB</a> · <a href="#batting-caughtStealing">CS</a> · <a href="#batting-stolenBasePercentage">SB%</a></p>
+  <p><strong>Pitching</strong> <a href="#pitching-strikePercentage">Strike %</a> · <a href="#pitching-whip">WHIP</a> · <a href="#pitching-era">ERA</a> · <a href="#pitching-runSupport">RS</a> · <a href="#pitching-earnedRuns">ER</a> · <a href="#pitching-runsAllowed">R</a> · <a href="#pitching-hitsAllowed">H</a> · <a href="#pitching-strikeoutsPerInning">K per Inning</a> · <a href="#pitching-walksPerInning">BB per Inning</a> · <a href="#pitching-strikeouts">SO</a> · <a href="#pitching-walks">BB</a> · <a href="#pitching-strikeoutWalkRatio">K/BB</a> · <a href="#pitching-homeRunsAllowed">HR</a> · <a href="#pitching-wildPitches">WP</a> · <a href="#pitching-gamesPitched">GP</a> · <a href="#pitching-inningsPitched">IP</a> · <a href="#pitching-battersFaced">BF</a> · <a href="#pitching-pitchesThrown">Pitches</a> · <a href="#pitching-strikesThrown">Strikes</a></p>
+  <p><strong>Fielding</strong> <a href="#fielding-fieldingPercentage">FPCT</a> · <a href="#fielding-errors">E</a> · <a href="#fielding-chances">TC</a> · <a href="#fielding-putouts">PO</a> · <a href="#fielding-assists">A</a> · <a href="#fielding-doublePlays">DP</a> · <a href="#fielding-innings">INN</a> · <a href="#fielding-games">GP</a></p>
+  <p><strong>Catching</strong> <a href="#catching-caughtStealingPercentage">CS %</a> · <a href="#catching-passedBalls">PB</a> · <a href="#catching-inningsCaught">INN</a> · <a href="#catching-caughtStealing">CS</a> · <a href="#catching-stealsAllowed">SB</a> · <a href="#catching-stealAttempts">SBATT</a> · <a href="#catching-pickoffs">PIK</a> · <a href="#catching-games">GP</a></p>
+</nav>
+
+<section id="batting">
+  <h2>Batting stats</h2>
+  <h3>Contact</h3>
+<article class="stat" id="batting-average" data-search="avg batting average avg">
+  <h4><span class="abbr">AVG</span> <span class="name">Batting Average</span></h4>
+  <p class="pill higherIsBetter">Higher is better</p>
+  <p class="definition">Hits divided by at bats.</p>
+  <p>A .300 average means three hits in every ten at bats. Walks, hit by pitch and sacrifices are not at bats, so they neither help nor hurt the average. Written baseball style without the leading zero: .345, not 0.345. Youth averages run higher than professional ones because fielding is weaker, so the performance targets on the charts are set for your player's age division rather than borrowed from the pros.</p>
+  <p class="formula"><code>H ÷ AB</code></p>
+  <p class="muted source">From box scores and CSV exports.</p>
+  <p class="muted where">Season Summary, Career, the game-by-game charts, and the Home tiles if you choose it.</p>
+</article>
+<article class="stat" id="batting-onBasePercentage" data-search="obp on-base percentage obp">
+  <h4><span class="abbr">OBP</span> <span class="name">On-Base Percentage</span></h4>
+  <p class="pill higherIsBetter">Higher is better</p>
+  <p class="definition">How often the batter reaches base by a hit, a walk or being hit by a pitch.</p>
+  <p>A walk counts the same as a single here, because a runner on first is a runner on first. OBP rewards patience at the plate in a way batting average cannot. The textbook version also adds sacrifice flies to the bottom of the fraction, since a sacrifice fly is an out. GameChanger prints one combined sacrifice number without separating bunts from flies, so Full Count leaves sacrifices out of the calculation entirely. At youth levels the difference is tiny.</p>
+  <p class="formula"><code>(H + BB + HBP) ÷ (AB + BB + HBP)</code></p>
+  <p class="muted source">From box scores and CSV exports.</p>
+  <p class="muted where">Season Summary, Career, the game-by-game charts, and the Home tiles if you choose it.</p>
+</article>
+<article class="stat" id="batting-sluggingPercentage" data-search="slg slugging percentage slg">
+  <h4><span class="abbr">SLG</span> <span class="name">Slugging Percentage</span></h4>
+  <p class="pill higherIsBetter">Higher is better</p>
+  <p class="definition">Total bases divided by at bats.</p>
+  <p>It measures power: a batter whose hits go for extra bases slugs higher than one who hits singles. A single is one base, a double two, a triple three and a home run four. A .500 slugging percentage means half a base per at bat. Slugging can be above 1.000, since a home run is worth four bases in one at bat.</p>
+  <p class="formula"><code>TB ÷ AB</code></p>
+  <p class="muted source">From box scores and CSV exports.</p>
+  <p class="muted where">Season Summary, Career, the game-by-game charts, and the Home tiles if you choose it.</p>
+</article>
+<article class="stat" id="batting-onBasePlusSlugging" data-search="ops on-base plus slugging ops">
+  <h4><span class="abbr">OPS</span> <span class="name">On-Base Plus Slugging</span></h4>
+  <p class="pill higherIsBetter">Higher is better</p>
+  <p class="definition">On-base percentage added to slugging percentage.</p>
+  <p>One number that covers both getting on base and hitting for power. OPS is a quick way to compare hitters when you do not want to look at two numbers. It adds two fractions with different denominators, which statisticians grumble about, but it tracks run production well. Above 1.000 is exceptional at any level.</p>
+  <p class="formula"><code>OBP + SLG</code></p>
+  <p class="muted source">From box scores and CSV exports.</p>
+  <p class="muted where">The game-by-game charts and Career.</p>
+</article>
+<article class="stat" id="batting-atBats" data-search="ab at bats at bats ab">
+  <h4><span class="abbr">AB</span> <span class="name">At Bats</span></h4>
+  <p class="pill neither">Neither is better</p>
+  <p class="definition">Trips to the plate that ended in a hit or an out, not counting walks, hit by pitch or sacrifices.</p>
+  <p>Neither high nor low is better. It is the number AVG and SLG divide by. A plate appearance is every trip to the plate; an at bat is only the ones that ended with the batter putting the ball in play or striking out. A batter who walks twice and singles once in three trips has one at bat and one hit, a 1.000 average. That is why rate stats need a season to mean anything.</p>
+  <p class="muted source">From box scores and CSV exports.</p>
+  <p class="muted where">A single game's box score, Season Summary, Career, and the Home tiles if you choose it.</p>
+</article>
+<article class="stat" id="batting-gamesPlayed" data-search="gp games played games played gp">
+  <h4><span class="abbr">GP</span> <span class="name">Games Played</span></h4>
+  <p class="pill neither">Neither is better</p>
+  <p class="definition">Games in which the player had a batting line.</p>
+  <p>Neither high nor low is better. It says how many games the batting totals are built from. A game imported before Full Count read batting lines, and not since repaired with Backfill Batting Stats in Settings, is not counted here. The pitching side keeps its own count, Games Pitched, because a player does not pitch every game they play.</p>
+  <p class="muted source">From box scores and CSV exports.</p>
+  <p class="muted where">Career and the Home tiles if you choose it.</p>
+</article>
+  <h3>Production</h3>
+<article class="stat" id="batting-hits" data-search="h hits hits h">
+  <h4><span class="abbr">H</span> <span class="name">Hits</span></h4>
+  <p class="pill higherIsBetter">Higher is better</p>
+  <p class="definition">Times the batter reached base safely on a batted ball, without an error or a fielder's choice.</p>
+  <p>Hits are the most direct way a batter helps the team score. Singles, doubles, triples and home runs all count as one hit each. Reaching base on an error is not a hit, and neither is a walk, which is why AVG and OBP tell different stories about the same player.</p>
+  <p class="muted source">From box scores and CSV exports.</p>
+  <p class="muted where">A single game's box score, Season Summary, Career, the game-by-game charts, and the Home tiles if you choose it.</p>
+</article>
+<article class="stat" id="batting-runsBattedIn" data-search="rbi runs batted in rbi">
+  <h4><span class="abbr">RBI</span> <span class="name">Runs Batted In</span></h4>
+  <p class="pill higherIsBetter">Higher is better</p>
+  <p class="definition">Runs that scored because of what the batter did at the plate.</p>
+  <p>RBI show how often the batter came through with runners on. A hit, a walk with the bases loaded, a sacrifice fly and a ground out that scores a runner all earn an RBI. A run that scores on an error or during a double play does not. RBI depend heavily on who bats ahead of the player, so a good hitter low in the order can have few of them.</p>
+  <p class="muted source">From box scores and CSV exports.</p>
+  <p class="muted where">A single game's box score, Season Summary, Career, the game-by-game charts, and the Home tiles if you choose it.</p>
+</article>
+<article class="stat" id="batting-runs" data-search="r runs scored runs r">
+  <h4><span class="abbr">R</span> <span class="name">Runs Scored</span></h4>
+  <p class="pill higherIsBetter">Higher is better</p>
+  <p class="definition">Times the player crossed home plate.</p>
+  <p>Runs are the point of the game, and a player who gets on base and runs well scores a lot of them. A run counts however the player reached base and however they came home, whether driven in by a teammate, on a steal of home or on an error. It rewards getting on base and good baserunning as much as hitting.</p>
+  <p class="muted source">From box scores and CSV exports.</p>
+  <p class="muted where">A single game's box score, Season Summary, Career, the game-by-game charts, and the Home tiles if you choose it.</p>
+</article>
+<article class="stat" id="batting-totalBases" data-search="tb total bases total bases tb">
+  <h4><span class="abbr">TB</span> <span class="name">Total Bases</span></h4>
+  <p class="pill higherIsBetter">Higher is better</p>
+  <p class="definition">Bases reached on hits: one for a single, two for a double, three for a triple, four for a home run.</p>
+  <p>It gives extra-base hits the extra credit a plain hit count does not. Bases reached by walks, steals or errors are not total bases; only hits count. Full Count reads TB from the note printed under the box score rather than working it out, so it matches what GameChanger shows.</p>
+  <p class="formula"><code>1B + 2 × 2B + 3 × 3B + 4 × HR</code></p>
+  <p class="muted source">From box scores and CSV exports.</p>
+  <p class="muted where">A single game's box score, Season Summary, Career, the game-by-game charts, and the Home tiles if you choose it.</p>
+</article>
+<article class="stat" id="batting-doubles" data-search="2b doubles doubles 2b">
+  <h4><span class="abbr">2B</span> <span class="name">Doubles</span></h4>
+  <p class="pill higherIsBetter">Higher is better</p>
+  <p class="definition">Hits on which the batter reached second base.</p>
+  <p>A double puts the batter in scoring position on their own. Extra-base hits are the clearest sign of a batter hitting the ball hard. Doubles are the most common of them at every level.</p>
+  <p class="muted source">From box scores and CSV exports.</p>
+  <p class="muted where">A single game's box score, Season Summary, Career, and the Home tiles if you choose it.</p>
+</article>
+<article class="stat" id="batting-triples" data-search="3b triples triples 3b">
+  <h4><span class="abbr">3B</span> <span class="name">Triples</span></h4>
+  <p class="pill higherIsBetter">Higher is better</p>
+  <p class="definition">Hits on which the batter reached third base.</p>
+  <p>Triples take speed as well as a hard hit. The rarest hit in the pros, but more common in youth ball, where a ball to the fence often goes for three bases.</p>
+  <p class="muted source">From box scores and CSV exports.</p>
+  <p class="muted where">A single game's box score, Season Summary, Career, and the Home tiles if you choose it.</p>
+</article>
+<article class="stat" id="batting-homeRuns" data-search="hr home runs home runs hr">
+  <h4><span class="abbr">HR</span> <span class="name">Home Runs</span></h4>
+  <p class="pill higherIsBetter">Higher is better</p>
+  <p class="definition">Hits on which the batter came all the way around to score.</p>
+  <p>Every one is at least a run. Over the fence or inside the park, both count. Inside-the-park home runs are the usual kind in younger divisions.</p>
+  <p class="muted source">From box scores and CSV exports.</p>
+  <p class="muted where">A single game's box score, Season Summary, Career, and the Home tiles if you choose it.</p>
+</article>
+<article class="stat" id="batting-runsCreated" data-search="rc runs created runs created rc">
+  <h4><span class="abbr">RC</span> <span class="name">Runs Created</span></h4>
+  <p class="pill higherIsBetter">Higher is better</p>
+  <p class="definition">An estimate of how many of the team's runs this player's batting produced.</p>
+  <p>It rolls hits, walks and power into one number in the units that matter: runs. Bill James's original formula from the 1970s, and the calculation Full Count uses unless you change it. The idea is that runs come from two things: getting on base, and moving runners along. The first part counts how often the batter reached base, the second counts how far their hits went, and dividing by chances keeps a player who bats more often from running away with it. Hit by pitch and stolen bases are not in this version, so a player who gets hit a lot is undercounted a little. Over a season, a team's Runs Created adds up close to its actual runs. For one game it swings with two or three trips to the plate, so the season and career figures are the ones to read. Settings offers a second calculation, Weighted, described under wRC; the Runs Created tile and chart show whichever one you choose.</p>
+  <p class="formula"><code>(H + BB) × TB ÷ (AB + BB)</code></p>
+  <p class="muted source">From box scores and CSV exports.</p>
+  <p class="muted where">Season Summary, Career, the game-by-game charts, and the Home tiles if you choose it.</p>
+</article>
+<article class="stat" id="batting-weightedRunsCreated" data-search="wrc weighted runs created wrc weighted runs created">
+  <h4><span class="abbr">wRC</span> <span class="name">Weighted Runs Created</span></h4>
+  <p class="pill higherIsBetter">Higher is better</p>
+  <p class="definition">Runs Created with each way of reaching base worth what it actually produced in this player's games, compared with the other hitters in those games.</p>
+  <p>It is the Weighted choice for Runs Created in Settings; the Runs Created tile and chart show it once you pick it. The major leagues measure how many runs a walk, a single, a double, a triple and a home run are each worth, and credit every hitter at those values instead of treating a walk like a single or a double like two singles. Full Count does the same, but with numbers from your player's own games rather than MLB's. Every box score you import holds every player's line, both teams. Full Count adds up each team's singles, doubles, triples, home runs, walks, hit batters and outs for each game, next to the runs that team scored, and works out the run value of each event that best explains those runs on these fields, with an out allowed to cost runs. Those values weight your player's line, and the result is compared with what an average hitter in the same games would have produced over the same trips to the plate. Nothing from MLB is used. Because youth teams hit few triples and fewer home runs, a home run is never allowed to be worth less than a triple, or a triple less than a double, and the calculation waits until about ten games with full box scores are in before it shows a number; before that the tile shows -- and the chart explains why. Games imported before September 2026 gain their rosters automatically the next time the app opens, from the files it kept.</p>
+  <p class="formula"><code>wOBA = (w1B × 1B + w2B × 2B + w3B × 3B + wHR × HR + wBB × BB + wHBP × HBP) ÷ (AB + BB + HBP)<br>wRC = (wOBA − average wOBA in these games + runs per PA in these games) × PA</code></p>
+  <p class="muted source">From box scores and CSV exports.</p>
+  <p class="muted where">The Runs Created tile on Season Summary and Career, the Runs Created chart, and the Home tiles if you choose it, when Settings has Runs Created set to Weighted.</p>
+</article>
+  <h3>Discipline</h3>
+<article class="stat" id="batting-walks" data-search="bb walks walks bb">
+  <h4><span class="abbr">BB</span> <span class="name">Walks</span></h4>
+  <p class="pill higherIsBetter">Higher is better</p>
+  <p class="definition">Times the batter was sent to first base on four balls.</p>
+  <p>A walk is a runner on base without risking an out. BB stands for base on balls. Walks show a batter who knows the strike zone and does not chase. They count toward on-base percentage but not batting average.</p>
+  <p class="muted source">From box scores and CSV exports.</p>
+  <p class="muted where">A single game's box score, Season Summary, Career, the game-by-game charts, and the Home tiles if you choose it.</p>
+</article>
+<article class="stat" id="batting-strikeouts" data-search="so strikeouts strikeouts so k">
+  <h4><span class="abbr">SO</span> <span class="name">Strikeouts</span></h4>
+  <p class="pill lowerIsBetter">Lower is better</p>
+  <p class="definition">Plate appearances that ended on three strikes.</p>
+  <p>A strikeout is an out on which nothing could happen: no runner moved, no fielder had to make a play. Written as SO on the box score and often as K in conversation. Raw strikeouts grow with plate appearances, so the charts use K Rate to compare games of different length.</p>
+  <p class="muted source">From box scores and CSV exports.</p>
+  <p class="muted where">A single game's box score, Season Summary, Career, the game-by-game charts, and the Home tiles if you choose it.</p>
+</article>
+<article class="stat" id="batting-strikeoutRate" data-search="k rate strikeout rate k rate">
+  <h4><span class="abbr">K Rate</span> <span class="name">Strikeout Rate</span></h4>
+  <p class="pill lowerIsBetter">Lower is better</p>
+  <p class="definition">The share of plate appearances that ended in a strikeout.</p>
+  <p>Under 20% is a good target for younger players and under 15% for older ones. Plate appearances here are at bats plus walks, hit by pitch and sacrifices, so every trip to the plate counts. A rate lets a two-trip game and a four-trip game share a chart.</p>
+  <p class="formula"><code>SO ÷ PA × 100</code></p>
+  <p class="muted source">From box scores and CSV exports.</p>
+  <p class="muted where">The game-by-game charts and Career.</p>
+</article>
+<article class="stat" id="batting-walkRate" data-search="bb rate walk rate bb rate">
+  <h4><span class="abbr">BB Rate</span> <span class="name">Walk Rate</span></h4>
+  <p class="pill higherIsBetter">Higher is better</p>
+  <p class="definition">The share of plate appearances that ended in a walk.</p>
+  <p>Around 15% is a strong rate for a youth hitter. The counterpart to K Rate. Together they describe plate discipline: a batter with a high walk rate and a low strikeout rate is controlling the at bat rather than being controlled by the pitcher.</p>
+  <p class="formula"><code>BB ÷ PA × 100</code></p>
+  <p class="muted source">From box scores and CSV exports.</p>
+  <p class="muted where">The game-by-game charts and Career.</p>
+</article>
+<article class="stat" id="batting-hitByPitch" data-search="hbp hit by pitch hit by pitch hbp">
+  <h4><span class="abbr">HBP</span> <span class="name">Hit By Pitch</span></h4>
+  <p class="pill neither">Neither is better</p>
+  <p class="definition">Times the batter was awarded first base after being hit by a pitch.</p>
+  <p>Neither high nor low is better. It puts the batter on base, but it says more about the pitching they faced than about their own skill. Counts toward on-base percentage but not batting average or at bats. Hit batters are common in younger divisions where pitchers are still finding the zone.</p>
+  <p class="muted source">From box scores and CSV exports.</p>
+  <p class="muted where">A single game's box score, Season Summary, Career, and the Home tiles if you choose it.</p>
+</article>
+<article class="stat" id="batting-sacrifices" data-search="sac sacrifices sacrifices sac">
+  <h4><span class="abbr">SAC</span> <span class="name">Sacrifices</span></h4>
+  <p class="pill neither">Neither is better</p>
+  <p class="definition">Bunts or fly balls that made an out on purpose to move a runner along or score one.</p>
+  <p>Neither high nor low is better. A sacrifice is a team play the coach called for, not a measure of the hitter. A sacrifice does not count as an at bat, so it does not lower the batting average. GameChanger prints one combined number for sacrifice bunts and sacrifice flies, and Full Count keeps it that way.</p>
+  <p class="muted source">From box scores and CSV exports.</p>
+  <p class="muted where">A single game's box score, Season Summary, Career, and the Home tiles if you choose it.</p>
+</article>
+  <h3>Baserunning</h3>
+<article class="stat" id="batting-stolenBases" data-search="sb stolen bases stolen bases sb">
+  <h4><span class="abbr">SB</span> <span class="name">Stolen Bases</span></h4>
+  <p class="pill higherIsBetter">Higher is better</p>
+  <p class="definition">Bases taken by running while the pitcher was delivering, without a hit or an error.</p>
+  <p>A steal moves a runner into scoring position without using an out. Steals are common in youth softball, where catchers' arms are still developing, so a fast player can rack up a lot of them. Compare with Caught Stealing to see whether the running is paying off.</p>
+  <p class="muted source">From box scores and CSV exports.</p>
+  <p class="muted where">A single game's box score, Season Summary, Career, the game-by-game charts, and the Home tiles if you choose it.</p>
+</article>
+<article class="stat" id="batting-caughtStealing" data-search="cs caught stealing caught stealing cs">
+  <h4><span class="abbr">CS</span> <span class="name">Caught Stealing</span></h4>
+  <p class="pill lowerIsBetter">Lower is better</p>
+  <p class="definition">Steal attempts that ended with the runner tagged out.</p>
+  <p>Each one gives away a runner who was already on base. An out on the bases costs more than most outs at the plate, because the runner had already done the hard part. A few are the price of running aggressively; a lot of them means the running is costing the team.</p>
+  <p class="muted source">From box scores and CSV exports.</p>
+  <p class="muted where">A single game's box score, Season Summary, Career, and the Home tiles if you choose it.</p>
+</article>
+<article class="stat" id="batting-stolenBasePercentage" data-search="sb% stolen base percentage sb%">
+  <h4><span class="abbr">SB%</span> <span class="name">Stolen Base Percentage</span></h4>
+  <p class="pill higherIsBetter">Higher is better</p>
+  <p class="definition">The share of steal attempts that succeeded.</p>
+  <p>Above 75% the running is helping the team; below that the outs cost more than the bases gain. Full Count shows a dash until the first steal attempt of the season. In youth ball success rates run high, so a player well under 75% is being sent when they should not be, or is leaving too late.</p>
+  <p class="formula"><code>SB ÷ (SB + CS) × 100</code></p>
+  <p class="muted source">From box scores and CSV exports.</p>
+  <p class="muted where">Season Summary, Career, and the Home tiles if you choose it.</p>
+</article>
+</section>
+
+<section id="pitching">
+  <h2>Pitching stats</h2>
+  <h3>Efficiency</h3>
+<article class="stat" id="pitching-strikePercentage" data-search="strike % strike percentage strike %">
+  <h4><span class="abbr">Strike %</span> <span class="name">Strike Percentage</span></h4>
+  <p class="pill higherIsBetter">Higher is better</p>
+  <p class="definition">The share of all pitches thrown that were strikes.</p>
+  <p>A pitcher who throws strikes gets ahead in the count, keeps walks down and makes batters swing. Every strike counts: called, swinging, foul balls and balls hit into play. Full Count reads pitches and strikes from the Pitches-Strikes line printed under the box score. If that line was not captured, the game shows no strike percentage at all rather than a misleading 0%. Around 60% is a solid target for youth pitchers, and the charts draw the target lines for your player's age division.</p>
+  <p class="formula"><code>Strikes ÷ Pitches × 100</code></p>
+  <p class="muted source">From box scores and CSV exports.</p>
+  <p class="muted where">A single game's box score, Season Summary, Career, the game-by-game charts, and the Home tiles if you choose it.</p>
+</article>
+<article class="stat" id="pitching-whip" data-search="whip walks and hits per inning pitched whip">
+  <h4><span class="abbr">WHIP</span> <span class="name">Walks and Hits per Inning Pitched</span></h4>
+  <p class="pill lowerIsBetter">Lower is better</p>
+  <p class="definition">How many runners a pitcher puts on base per inning, by walk or by hit.</p>
+  <p>A WHIP of 1.0 means about one runner reaches base every inning. WHIP measures what the pitcher gave up directly. Hit batters and runners who reached on an error are not included. Innings are counted in thirds, so an outing written as 4.1 is four and one third innings. Because it is a rate, one short outing can swing it a long way; the season figure is the one to trust.</p>
+  <p class="formula"><code>(BB + H) ÷ IP</code></p>
+  <p class="muted source">From box scores and CSV exports.</p>
+  <p class="muted where">Season Summary, Career, the game-by-game charts, and the Home tiles if you choose it.</p>
+</article>
+  <h3>Run Prevention</h3>
+<article class="stat" id="pitching-era" data-search="era earned runs per inning era">
+  <h4><span class="abbr">ERA</span> <span class="name">Earned Runs per Inning</span></h4>
+  <p class="pill lowerIsBetter">Lower is better</p>
+  <p class="definition">Earned runs allowed divided by innings pitched.</p>
+  <p>It tells you how many runs the pitcher gives up through their own pitching, rather than through errors behind them. A traditional ERA multiplies this by the length of a full game: seven innings in softball, nine in the major leagues. Youth games run four, five or six innings, so Full Count leaves the number per inning instead of assuming a game length. That makes it smaller than the ERA you hear on television. Here, 0.50 means one earned run every two innings, and 1.00 means one every inning. At the youngest ages most runs score on errors and are unearned, so the performance targets for ERA begin at 12U.</p>
+  <p class="formula"><code>ER ÷ IP</code></p>
+  <p class="muted source">From box scores and CSV exports.</p>
+  <p class="muted where">Season Summary, Career, the game-by-game charts, and the Home tiles if you choose it.</p>
+</article>
+<article class="stat" id="pitching-runSupport" data-search="rs run support run support rs">
+  <h4><span class="abbr">RS</span> <span class="name">Run Support</span></h4>
+  <p class="pill neither">Neither is better</p>
+  <p class="definition">The average number of runs the team scored in the games the pitcher pitched all innings.</p>
+  <p>Neither direction is a mark on the pitcher: it measures the help the offense gave the pitcher, which the pitcher does not control. Higher is easier to pitch with. Only games the pitcher pitched all innings count, so the figure describes the offense behind a complete outing. A game with another pitcher on the team is left out entirely, and so is a game with no final score. It is per game, not per inning, and the Rate Stats setting does not change it. A game imported from a box score, by PDF or screenshots, carries both the score and who pitched; a game that came only from a CSV has neither.</p>
+  <p class="formula"><code>Total runs scored by the team in games the pitcher pitched all innings ÷ number of games the pitcher pitched all innings</code></p>
+  <p class="muted source">From box scores only: it needs the final score and who pitched.</p>
+  <p class="muted where">Season Summary, Career, the game-by-game charts, and the Home tiles if you choose it.</p>
+</article>
+<article class="stat" id="pitching-earnedRuns" data-search="er earned runs earned runs er">
+  <h4><span class="abbr">ER</span> <span class="name">Earned Runs</span></h4>
+  <p class="pill lowerIsBetter">Lower is better</p>
+  <p class="definition">Runs that scored without help from an error or a passed ball.</p>
+  <p>These are the runs the pitcher is held responsible for. The scorekeeper decides which runs are earned by working out how the inning would have gone with no errors. That judgment is only as careful as the scorekeeping, so the split between earned and unearned runs is more reliable in older divisions. Comparing ER to Runs Allowed shows how much the defense cost the pitcher.</p>
+  <p class="muted source">From box scores and CSV exports.</p>
+  <p class="muted where">A single game's box score, Season Summary, Career, and the game-by-game charts.</p>
+</article>
+<article class="stat" id="pitching-runsAllowed" data-search="r runs allowed runs allowed r">
+  <h4><span class="abbr">R</span> <span class="name">Runs Allowed</span></h4>
+  <p class="pill lowerIsBetter">Lower is better</p>
+  <p class="definition">Every run that scored while this pitcher was in the game, earned or not.</p>
+  <p>This is the number that decides the game, whoever was at fault. Runs Allowed includes runs that scored on errors, passed balls and anything else. A pitcher with far more runs allowed than earned runs is being let down by the fielding, which is common and worth knowing before judging the pitching.</p>
+  <p class="muted source">From box scores and CSV exports.</p>
+  <p class="muted where">A single game's box score, Season Summary, Career, and the game-by-game charts.</p>
+</article>
+<article class="stat" id="pitching-hitsAllowed" data-search="h hits allowed hits allowed h">
+  <h4><span class="abbr">H</span> <span class="name">Hits Allowed</span></h4>
+  <p class="pill lowerIsBetter">Lower is better</p>
+  <p class="definition">The number of hits batters got against this pitcher.</p>
+  <p>Fewer hits means fewer runners and fewer runs. Any hit counts the same here, whether a single or a home run. A ball that a fielder should have caught and did not is scored as an error, not a hit, so this number is about what the batter earned.</p>
+  <p class="muted source">From box scores and CSV exports.</p>
+  <p class="muted where">A single game's box score, Season Summary, Career, and the game-by-game charts.</p>
+</article>
+  <h3>Command &amp; Contact</h3>
+<article class="stat" id="pitching-strikeoutsPerInning" data-search="k per inning strikeouts per inning k per inning">
+  <h4><span class="abbr">K per Inning</span> <span class="name">Strikeouts per Inning</span></h4>
+  <p class="pill higherIsBetter">Higher is better</p>
+  <p class="definition">Strikeouts divided by innings pitched.</p>
+  <p>At 1.0, one of every three outs is a strikeout. A four-inning outing and a six-inning outing cannot be compared on raw strikeouts, but they can be compared per inning. That is why the charts plot this rather than the total. A strikeout is an out the fielders did not have to make, which matters most while fielding is still developing.</p>
+  <p class="formula"><code>SO ÷ IP</code></p>
+  <p class="muted source">From box scores and CSV exports.</p>
+  <p class="muted where">The game-by-game charts and Career.</p>
+</article>
+<article class="stat" id="pitching-walksPerInning" data-search="bb per inning walks per inning bb per inning">
+  <h4><span class="abbr">BB per Inning</span> <span class="name">Walks per Inning</span></h4>
+  <p class="pill lowerIsBetter">Lower is better</p>
+  <p class="definition">Walks divided by innings pitched.</p>
+  <p>Under 1.0 is a reasonable goal for a young pitcher; walks are free runners. Like strikeouts per inning, this lets a short outing and a long one sit on the same chart. Walks are the clearest sign of control, because unlike hits they do not depend on the fielders or on luck.</p>
+  <p class="formula"><code>BB ÷ IP</code></p>
+  <p class="muted source">From box scores and CSV exports.</p>
+  <p class="muted where">The game-by-game charts and Career.</p>
+</article>
+<article class="stat" id="pitching-strikeouts" data-search="so strikeouts strikeouts so k">
+  <h4><span class="abbr">SO</span> <span class="name">Strikeouts</span></h4>
+  <p class="pill higherIsBetter">Higher is better</p>
+  <p class="definition">Batters put out on three strikes.</p>
+  <p>Each one is an out the defense did not have to make. Written as SO on the box score and often as K in conversation. A batter who strikes out but reaches base on a dropped third strike still counts as a strikeout for the pitcher. Raw strikeouts grow with innings pitched, so use K per Inning to compare outings of different length.</p>
+  <p class="muted source">From box scores and CSV exports.</p>
+  <p class="muted where">A single game's box score, Season Summary, Career, the game-by-game charts, and the Home tiles if you choose it.</p>
+</article>
+<article class="stat" id="pitching-walks" data-search="bb walks walks bb">
+  <h4><span class="abbr">BB</span> <span class="name">Walks</span></h4>
+  <p class="pill lowerIsBetter">Lower is better</p>
+  <p class="definition">Batters sent to first base on four balls.</p>
+  <p>A walk is a runner the pitcher gave away. BB stands for base on balls. Walks do not count as at bats for the batter or as hits against the pitcher, but they put a runner on base just the same, which is why WHIP counts them alongside hits.</p>
+  <p class="muted source">From box scores and CSV exports.</p>
+  <p class="muted where">A single game's box score, Season Summary, Career, the game-by-game charts, and the Home tiles if you choose it.</p>
+</article>
+<article class="stat" id="pitching-strikeoutWalkRatio" data-search="k/bb strikeout to walk ratio k/bb">
+  <h4><span class="abbr">K/BB</span> <span class="name">Strikeout to Walk Ratio</span></h4>
+  <p class="pill higherIsBetter">Higher is better</p>
+  <p class="definition">Strikeouts divided by walks.</p>
+  <p>At 2.0 the pitcher strikes out two batters for every one walked. One number for both halves of control: missing bats and finding the zone. Full Count shows a dash until the first walk of the season, because dividing by zero has no meaning. Above 3.0 is excellent at any level.</p>
+  <p class="formula"><code>SO ÷ BB</code></p>
+  <p class="muted source">From box scores and CSV exports.</p>
+  <p class="muted where">Season Summary, Career, and the Home tiles if you choose it.</p>
+</article>
+<article class="stat" id="pitching-homeRunsAllowed" data-search="hr home runs allowed home runs hr">
+  <h4><span class="abbr">HR</span> <span class="name">Home Runs Allowed</span></h4>
+  <p class="pill lowerIsBetter">Lower is better</p>
+  <p class="definition">Home runs hit against this pitcher.</p>
+  <p>Every one scores at least a run. Home runs are rare in youth softball and baseball, and many are inside the park, so a season total of one or two is normal. A sudden run of them usually says more about a fence distance or a strong opponent than about the pitcher.</p>
+  <p class="muted source">From box scores and CSV exports.</p>
+  <p class="muted where">A single game's box score, Season Summary, Career, and the game-by-game charts.</p>
+</article>
+<article class="stat" id="pitching-wildPitches" data-search="wp wild pitches wild pitches wp">
+  <h4><span class="abbr">WP</span> <span class="name">Wild Pitches</span></h4>
+  <p class="pill lowerIsBetter">Lower is better</p>
+  <p class="definition">Pitches so far off target that the catcher could not reasonably stop them, and a runner advanced.</p>
+  <p>Each one moves a runner closer to scoring without the batter doing anything. A wild pitch is only charged when a runner advances or a batter reaches base on a dropped third strike. A ball the catcher should have handled is a passed ball instead and is charged to the catcher, so this number is about the pitch, not the catching.</p>
+  <p class="muted source">From box scores and CSV exports.</p>
+  <p class="muted where">A single game's box score, Season Summary, Career, and the game-by-game charts.</p>
+</article>
+  <h3>Workload</h3>
+<article class="stat" id="pitching-gamesPitched" data-search="gp games pitched games pitched gp">
+  <h4><span class="abbr">GP</span> <span class="name">Games Pitched</span></h4>
+  <p class="pill neither">Neither is better</p>
+  <p class="definition">Games in which the player threw at least one pitch.</p>
+  <p>Neither high nor low is better. It shows how much the pitcher has been used. A relief appearance of one batter counts the same as a complete game. Read it alongside Innings Pitched to see how long the outings have been.</p>
+  <p class="muted source">From box scores and CSV exports.</p>
+  <p class="muted where">Season Summary, Career, and the Home tiles if you choose it.</p>
+</article>
+<article class="stat" id="pitching-inningsPitched" data-search="ip innings pitched innings pitched ip">
+  <h4><span class="abbr">IP</span> <span class="name">Innings Pitched</span></h4>
+  <p class="pill neither">Neither is better</p>
+  <p class="definition">How many innings the pitcher worked, counted by outs.</p>
+  <p>Neither high nor low is better on its own. It is the workload, and the denominator for ERA, WHIP and the per-inning rates. Written the baseball way: 4.1 means four innings and one out, not four and a tenth. Full Count stores outs rather than the written number so that totals add correctly. Two outings of 4.2 and 3.2 make 8.1 innings, not 7.4.</p>
+  <p class="formula"><code>Outs ÷ 3</code></p>
+  <p class="muted source">From box scores and CSV exports.</p>
+  <p class="muted where">A single game's box score, Season Summary, Career, the game-by-game charts, and the Home tiles if you choose it.</p>
+</article>
+<article class="stat" id="pitching-battersFaced" data-search="bf batters faced batters faced bf">
+  <h4><span class="abbr">BF</span> <span class="name">Batters Faced</span></h4>
+  <p class="pill neither">Neither is better</p>
+  <p class="definition">Every batter who came to the plate against this pitcher.</p>
+  <p>Neither high nor low is better on its own. Compared with innings pitched, it shows how many extra batters the pitcher had to get through. Three batters an inning is a perfect inning. A pitcher who faces five or six an inning is allowing a lot of runners, whether by hits, walks or errors. Full Count reads this from the BF line printed under the box score.</p>
+  <p class="muted source">From box scores and CSV exports.</p>
+  <p class="muted where">A single game's box score, Season Summary, Career, and the game-by-game charts.</p>
+</article>
+<article class="stat" id="pitching-pitchesThrown" data-search="pitches pitches thrown pitches">
+  <h4><span class="abbr">Pitches</span> <span class="name">Pitches Thrown</span></h4>
+  <p class="pill neither">Neither is better</p>
+  <p class="definition">The total number of pitches thrown in the game.</p>
+  <p>Neither high nor low is better on its own. Coaches use pitch counts to protect young arms, and fewer pitches per inning means a more efficient outing. Pitch counts are how arms are managed, and many leagues set a limit per game or per week. Full Count reads the count from the Pitches-Strikes line under the box score, so a game imported without that line shows no pitch count. Dividing pitches by batters faced gives pitches per batter; under four is efficient.</p>
+  <p class="muted source">From box scores and CSV exports.</p>
+  <p class="muted where">A single game's box score, Season Summary, Career, the game-by-game charts, and the Home tiles if you choose it.</p>
+</article>
+<article class="stat" id="pitching-strikesThrown" data-search="strikes strikes thrown strikes">
+  <h4><span class="abbr">Strikes</span> <span class="name">Strikes Thrown</span></h4>
+  <p class="pill neither">Neither is better</p>
+  <p class="definition">The number of pitches that were strikes.</p>
+  <p>Neither high nor low is better as a total, because it grows with pitches thrown. Strike % is the version to judge by. Read from the same Pitches-Strikes line as the pitch count. Strikes include called strikes, swinging strikes, foul balls and balls put in play.</p>
+  <p class="muted source">From box scores and CSV exports.</p>
+  <p class="muted where">A single game's box score, Season Summary, Career, and the game-by-game charts.</p>
+</article>
+</section>
+
+<section id="fielding">
+  <h2>Fielding stats</h2>
+  <p class="muted">GameChanger shows fielding stats to Team Staff in its app, on a wide sideways-scrolling table. Full Count reads them from the CSV export instead: the same account, one download, and far fewer screenshots. Box score screenshots and PDFs do not carry them.</p>
+  <h3>Reliability</h3>
+<article class="stat" id="fielding-fieldingPercentage" data-search="fpct fielding percentage fpct">
+  <h4><span class="abbr">FPCT</span> <span class="name">Fielding Percentage</span></h4>
+  <p class="pill higherIsBetter">Higher is better</p>
+  <p class="definition">The share of a player's fielding chances handled without an error.</p>
+  <p>A player at .950 makes the play nineteen times out of twenty. Read it with the position in mind. An infielder or a catcher handles harder plays and runs lower than an outfielder at the same age, so the same number can be routine at one position and excellent at another. Full Count shows one figure for all the positions a player played, since the CSV gives chances only as a total. Nothing is shown for a player with no chances, because a player who touched nothing is not a 1.000 fielder. Full Count reads fielding and catching from GameChanger CSV exports; box score screenshots and PDFs do not carry them.</p>
+  <p class="formula"><code>(PO + A) ÷ (PO + A + E)</code></p>
+  <p class="muted source">Full Count reads these from CSV exports.</p>
+  <p class="muted where">Season Summary, Trends, the game-by-game charts, and the Home tiles if you choose it.</p>
+</article>
+<article class="stat" id="fielding-errors" data-search="e errors errors e">
+  <h4><span class="abbr">E</span> <span class="name">Errors</span></h4>
+  <p class="pill lowerIsBetter">Lower is better</p>
+  <p class="definition">Plays a fielder should have made with ordinary effort and did not.</p>
+  <p>Every error hands the other team a base or an out they had not earned. The scorekeeper decides what counts as an error, and youth scorekeeping is generous both ways. A hard-hit ball that gets through is usually a hit, not an error. Errors are the one fielding number a box score also prints, by name in the notes under the batting table, but Full Count reads them from the CSV so they stay with the rest of the fielding line.</p>
+  <p class="muted source">Full Count reads these from CSV exports.</p>
+  <p class="muted where">Season Summary, Trends, the game-by-game charts, a game's page, and the Home tiles if you choose it.</p>
+</article>
+<article class="stat" id="fielding-chances" data-search="tc total chances chances tc">
+  <h4><span class="abbr">TC</span> <span class="name">Total Chances</span></h4>
+  <p class="pill neither">Neither is better</p>
+  <p class="definition">Every ball a fielder had a chance to make a play on: putouts, assists and errors added together.</p>
+  <p>Neither is better on its own. It says how busy the player was in the field, and it is the denominator behind fielding percentage. A catcher's chances pile up fast, because every strikeout is a putout for the catcher. A right fielder's stay small. Compare chances within a position, not across them.</p>
+  <p class="formula"><code>PO + A + E</code></p>
+  <p class="muted source">Full Count reads these from CSV exports.</p>
+  <p class="muted where">Season Summary, Trends, the game-by-game charts, a game's page, and the Home tiles if you choose it.</p>
+</article>
+  <h3>Plays</h3>
+<article class="stat" id="fielding-putouts" data-search="po putouts putouts po">
+  <h4><span class="abbr">PO</span> <span class="name">Putouts</span></h4>
+  <p class="pill neither">Neither is better</p>
+  <p class="definition">Outs the fielder recorded personally: a catch, a tag, or a force at a base the fielder was covering.</p>
+  <p>Higher is better, within reason. It mostly tracks how often the ball came to the fielder. First basemen and catchers collect the most putouts, since so many outs end in their glove. A strikeout is scored as a putout for the catcher.</p>
+  <p class="muted source">Full Count reads these from CSV exports.</p>
+  <p class="muted where">Season Summary, Trends, a game's page, and the Home tiles if you choose it.</p>
+</article>
+<article class="stat" id="fielding-assists" data-search="a assists assists a">
+  <h4><span class="abbr">A</span> <span class="name">Assists</span></h4>
+  <p class="pill neither">Neither is better</p>
+  <p class="definition">Outs the fielder helped make by throwing or deflecting the ball to the teammate who recorded the putout.</p>
+  <p>Higher is better, within reason. Infielders earn most of them. A shortstop who fields a grounder and throws to first gets the assist; the first baseman gets the putout. A catcher throwing out a runner gets an assist too.</p>
+  <p class="muted source">Full Count reads these from CSV exports.</p>
+  <p class="muted where">Season Summary, Trends, a game's page, and the Home tiles if you choose it.</p>
+</article>
+<article class="stat" id="fielding-doublePlays" data-search="dp double plays double plays dp">
+  <h4><span class="abbr">DP</span> <span class="name">Double Plays</span></h4>
+  <p class="pill higherIsBetter">Higher is better</p>
+  <p class="definition">Plays in which the fielder took part in recording two outs.</p>
+  <p>They are rare at younger ages and worth noticing when they happen. Every fielder who handled the ball during the play is credited with the double play. Triple plays are counted the same way and shown when a player has one.</p>
+  <p class="muted source">Full Count reads these from CSV exports.</p>
+  <p class="muted where">Season Summary, Trends, a game's page, and the Home tiles if you choose it.</p>
+</article>
+  <h3>Innings by Position</h3>
+<article class="stat" id="fielding-innings" data-search="inn innings in the field innings inn total">
+  <h4><span class="abbr">INN</span> <span class="name">Innings in the Field</span></h4>
+  <p class="pill neither">Neither is better</p>
+  <p class="definition">How many innings the player spent at each position, and in total.</p>
+  <p>Neither is better. It describes where and how much the player played, not how well. Innings are counted in thirds, so 5.2 is five and two thirds innings. The Season Summary lists only the positions the player actually played, in the order GameChanger uses, with the season's total beside them.</p>
+  <p class="muted source">Full Count reads these from CSV exports.</p>
+  <p class="muted where">Season Summary, Trends, and the Home tiles if you choose it.</p>
+</article>
+<article class="stat" id="fielding-games" data-search="gp games fielded games fielded gp">
+  <h4><span class="abbr">GP</span> <span class="name">Games Fielded</span></h4>
+  <p class="pill neither">Neither is better</p>
+  <p class="definition">Games with a fielding line for the player.</p>
+  <p>Neither is better. It is the count behind every fielding total. Only games imported from a GameChanger CSV export carry a fielding line, so this can be smaller than Games Played on the batting side.</p>
+  <p class="muted source">Full Count reads these from CSV exports.</p>
+  <p class="muted where">Season Summary, Trends, and the Home tiles if you choose it.</p>
+</article>
+</section>
+
+<section id="catching">
+  <h2>Catching stats</h2>
+  <p class="muted">GameChanger shows catching stats to Team Staff in its app, on a wide sideways-scrolling table. Full Count reads them from the CSV export instead: the same account, one download, and far fewer screenshots. Box score screenshots and PDFs do not carry them.</p>
+  <h3>Control</h3>
+<article class="stat" id="catching-caughtStealingPercentage" data-search="cs % caught stealing percentage cs %">
+  <h4><span class="abbr">CS %</span> <span class="name">Caught Stealing Percentage</span></h4>
+  <p class="pill higherIsBetter">Higher is better</p>
+  <p class="definition">The share of stolen base attempts against the catcher that ended with the runner thrown out.</p>
+  <p>It is the clearest measure of a catcher's arm and release. Full Count shows the rate only once the catcher has faced ten attempts; below that the tile shows the counts instead, because two of five is 40 percent and says nothing. Expect it to read low in youth ball: college catchers throw out about one runner in six, and at 10U and 12U a stolen base is often a passed ball or a wild pitch that nobody could have thrown on. The performance targets take that into account. Full Count reads catching stats from GameChanger CSV exports.</p>
+  <p class="formula"><code>CS ÷ Attempts × 100</code></p>
+  <p class="muted source">Full Count reads these from CSV exports. The box score's batting notes print SB and CS for the player as a runner, which are not the catcher's numbers.</p>
+  <p class="muted where">Season Summary, Trends, the game-by-game charts, and the Home tiles if you choose it.</p>
+</article>
+<article class="stat" id="catching-passedBalls" data-search="pb passed balls passed balls pb">
+  <h4><span class="abbr">PB</span> <span class="name">Passed Balls</span></h4>
+  <p class="pill lowerIsBetter">Lower is better</p>
+  <p class="definition">Pitches the catcher should have stopped with ordinary effort and did not, on which a runner advanced.</p>
+  <p>It is the catcher's own error column. A pitch the catcher had no fair chance at is a wild pitch and goes against the pitcher instead. The scorekeeper draws that line. Read the count against innings caught, shown beside it: two passed balls in a full game and two in a two-inning stint are not the same afternoon.</p>
+  <p class="muted source">Full Count reads these from CSV exports. The box score's batting notes print SB and CS for the player as a runner, which are not the catcher's numbers.</p>
+  <p class="muted where">Season Summary, Trends, the game-by-game charts, a game's page, and the Home tiles if you choose it.</p>
+</article>
+<article class="stat" id="catching-inningsCaught" data-search="inn innings caught innings caught inn">
+  <h4><span class="abbr">INN</span> <span class="name">Innings Caught</span></h4>
+  <p class="pill neither">Neither is better</p>
+  <p class="definition">Innings the player spent behind the plate.</p>
+  <p>Neither is better. It is the workload every catching rate is measured against. Counted in thirds like innings pitched. In the CSV this is the INN column of the Fielding section, which equals the C column of innings by position.</p>
+  <p class="muted source">Full Count reads these from CSV exports. The box score's batting notes print SB and CS for the player as a runner, which are not the catcher's numbers.</p>
+  <p class="muted where">Season Summary, Trends, the game-by-game charts, a game's page, and the Home tiles if you choose it.</p>
+</article>
+  <h3>Runners</h3>
+<article class="stat" id="catching-caughtStealing" data-search="cs caught stealing caught stealing cs">
+  <h4><span class="abbr">CS</span> <span class="name">Caught Stealing</span></h4>
+  <p class="pill higherIsBetter">Higher is better</p>
+  <p class="definition">Runners the catcher threw out trying to steal.</p>
+  <p>Each one is a base runner erased. This is the catcher's side of the number. The batting page has a Caught Stealing of its own, which counts the times this player was thrown out as a runner. The box score's CS note describes the runner, not the catcher, which is why the catcher's count comes only from the CSV.</p>
+  <p class="muted source">Full Count reads these from CSV exports. The box score's batting notes print SB and CS for the player as a runner, which are not the catcher's numbers.</p>
+  <p class="muted where">Season Summary, Trends, a game's page, and the Home tiles if you choose it.</p>
+</article>
+<article class="stat" id="catching-stealsAllowed" data-search="sb steals allowed steals allowed sb">
+  <h4><span class="abbr">SB</span> <span class="name">Steals Allowed</span></h4>
+  <p class="pill lowerIsBetter">Lower is better</p>
+  <p class="definition">Stolen bases the other team took while the player was catching.</p>
+  <p>Lower is better, but read it against attempts. A team that runs a lot will run up this number on any catcher. Youth scorekeepers often score a runner advancing on a passed ball or a wild pitch as a stolen base, so this count includes plays the catcher never had a throw on. Attempts and CS % together say more than this number alone.</p>
+  <p class="muted source">Full Count reads these from CSV exports. The box score's batting notes print SB and CS for the player as a runner, which are not the catcher's numbers.</p>
+  <p class="muted where">Season Summary, Trends, the game-by-game charts, a game's page, and the Home tiles if you choose it.</p>
+</article>
+<article class="stat" id="catching-stealAttempts" data-search="sbatt stolen base attempts attempts sbatt">
+  <h4><span class="abbr">SBATT</span> <span class="name">Stolen Base Attempts</span></h4>
+  <p class="pill neither">Neither is better</p>
+  <p class="definition">Every time a runner tried to steal while the player was catching: steals allowed plus runners caught.</p>
+  <p>Neither is better. It says how often the catcher was tested. It is the denominator of CS %, and the reason that rate waits for ten attempts before it is shown.</p>
+  <p class="formula"><code>SB + CS</code></p>
+  <p class="muted source">Full Count reads these from CSV exports. The box score's batting notes print SB and CS for the player as a runner, which are not the catcher's numbers.</p>
+  <p class="muted where">Season Summary, Trends, a game's page, and the Home tiles if you choose it.</p>
+</article>
+<article class="stat" id="catching-pickoffs" data-search="pik pickoffs pickoffs pik">
+  <h4><span class="abbr">PIK</span> <span class="name">Pickoffs</span></h4>
+  <p class="pill higherIsBetter">Higher is better</p>
+  <p class="definition">Runners the catcher picked off a base with a throw.</p>
+  <p>They are rare and they change innings. A pickoff is a snap throw behind a runner who has drifted too far off the base, as opposed to throwing out a runner in the act of stealing. Shown as a count; it is too rare for a rate.</p>
+  <p class="muted source">Full Count reads these from CSV exports. The box score's batting notes print SB and CS for the player as a runner, which are not the catcher's numbers.</p>
+  <p class="muted where">Season Summary, Trends, a game's page, and the Home tiles if you choose it.</p>
+</article>
+  <h3>Workload</h3>
+<article class="stat" id="catching-games" data-search="gp games caught games caught gp">
+  <h4><span class="abbr">GP</span> <span class="name">Games Caught</span></h4>
+  <p class="pill neither">Neither is better</p>
+  <p class="definition">Games in which the player caught at least one out.</p>
+  <p>Neither is better. It is the count behind every catching total. Only games imported from a GameChanger CSV export carry a catching line, and only when the player actually caught. A game played at another position has no catching line at all.</p>
+  <p class="muted source">Full Count reads these from CSV exports. The box score's batting notes print SB and CS for the player as a runner, which are not the catcher's numbers.</p>
+  <p class="muted where">Season Summary, Trends, and the Home tiles if you choose it.</p>
+</article>
+</section>
+
+
+  </div>
+</main>
+
+<div class="closing">
+  <p>Is a stat missing, or an explanation unclear? Email us and we will fix it.</p>
+  <a class="cta" href="mailto:fullcountstattracker@gmail.com?subject=Full%20Count%20stats">Ask a question</a>
+</div>
+
+<footer class="muted">
+  <p>Full Count is not affiliated with or endorsed by GameChanger. GameChanger is a trademark of its respective owner.</p>
+  <p><a href="index.html">Home</a> · <a href="faq.html">FAQ</a> · <a href="privacy.html">Privacy Policy</a> · <a href="mailto:fullcountstattracker@gmail.com">Contact</a></p>
+</footer>
+
+<script>
+  // Filters the page the way the app's list filters: by abbreviation, name
+  // and the labels the app uses. Everything stays on the page when the box
+  // is empty, so the page works with scripting off too.
+  const input = document.getElementById('stat-search');
+  const stats = Array.from(document.querySelectorAll('.stat'));
+  const headings = Array.from(document.querySelectorAll('.faq h2, .faq h3, .index, #coming > p'));
+  const none = document.getElementById('no-match');
+  input.addEventListener('input', () => {
+    const q = input.value.trim().toLowerCase();
+    let shown = 0;
+    for (const s of stats) {
+      const hit = q === '' || s.dataset.search.includes(q) || s.textContent.toLowerCase().includes(q);
+      s.classList.toggle('hidden', !hit);
+      if (hit) shown++;
+    }
+    for (const h of headings) h.classList.toggle('none', q !== '');
+    none.classList.toggle('shown', q !== '' && shown === 0);
+  });
+</script>
+
+</body>
+</html>
+
