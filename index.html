@@ -124,7 +124,7 @@
       <h2>Stay competitive with performance targets</h2>
       <p>Full Count annotates stat trend charts with performance targets for your player's age division, 8U through 18U.</p>
       <p>Charts show targets for Good and Excellent levels of performance. Full Count shows performance targets for strike percentage, ERA, WHIP, strikeouts and walks per inning, batting average, on-base percentage, slugging, OPS and plate discipline, along with fielding percentage and caught-stealing rate.</p>
-      <p>Performance targets are graphed true to their age division for the season, so career timelines show the progressing level of competition as performance targets jump. Since no league publishes performance targets, these tiers are not scientific, but reflect coaching consensus rooted in wide public discourse.</p>
+      <p>Performance targets are graphed true to their age division for the season, so career timelines show the progressing level of competition as performance targets jump. The season over season charts on Season Summary change their targets the same way, measuring each season against its own division. Since no league publishes performance targets, these tiers are not scientific, but reflect coaching consensus rooted in wide public discourse.</p>
       </div>
       <figure class="inline-shot">
         <img src="images/12-game-log-pitching.png" width="1206" height="2622"
@@ -137,8 +137,8 @@
       <div class="copy">
       <h2>Easy import from GameChanger</h2>
       <p>Importing a game into Full Count is simple. Send the game stats as a CSV export or box score and choose your player. Full Count will read your team, season, opponent, final score and your player's stats. It appears immediately in Home, Games, Trends, Season Summary and Best Performances.</p>
-      <p>There are several ways to get your stats from GameChanger. If you hold Team Staff access, you can export games in CSV or PDF format. A CSV export is the richest data set, including fielding and catching statistics. A CSV covers whatever GameChanger's stats filter is showing, so filter to the single game before you export it; the <a href="faq.html#csv-export">FAQ has the steps</a>. The box score PDF includes batting and pitching stats. A CSV does not carry the game's date or opponent, so Full Count asks for those two. If the game's box score is already in, Full Count recognizes the game by its lineup and adds the fielding and catching stats to it.</p>
-      <p>Even without Team Staff access, you can import your box scores simply by taking screenshots of the game. Full Count will stitch the screenshots together, read the stats, and import them just like a full box score PDF. When importing screenshots, Full Count double checks team totals and alerts you when it's possible that a stat was entered incorrectly for your player, so you can correct the record.</p>
+      <p>There are several ways to get your stats from GameChanger. If you hold Team Staff access, you can export games in CSV or PDF format. A CSV export is the richest data set, including fielding and catching statistics. A CSV covers whatever GameChanger's stats filter is showing, so filter to the single game before you export it; the <a href="faq.html#csv-export">FAQ has the steps</a>. The box score PDF includes batting and pitching stats. A CSV does not carry the game's date or opponent, so Full Count asks for those two. Send a screenshot of the team's GameChanger Schedule along with your CSVs, in one share or one ZIP, and Full Count fills them in for you, matching each CSV to its game by the final score. If the game's box score is already in, Full Count recognizes the game by its lineup and adds the fielding and catching stats to it.</p>
+      <p>Even without Team Staff access, you can import your box scores simply by taking screenshots of the game. Full Count will stitch the screenshots together, read the stats, and import them just like a full box score PDF. When importing screenshots, Full Count double checks team totals and alerts you when it's possible that a stat was entered incorrectly for your player, so you can correct the record. A screenshot of a PDF box score works too, for when someone sends you a picture of the PDF instead of the file.</p>
       <p>No GameChanger? No problem. Enter the game directly into Full Count by hand.</p>
       </div>
       <figure class="inline-shot">
@@ -146,6 +146,19 @@
              alt="The import review screen with a green banner reading Matched to an existing team and season, above the game details and the player's batting line.">
         <figcaption class="muted">A game that matches a team and season you already have goes straight in.</figcaption>
       </figure>
+    </section>
+
+    <section id="whole-team">
+      <div class="copy">
+      <h2>Import a whole team at once</h2>
+      <p>If you coach, or keep the book for the team, one set of screenshots can fill in every player. Tap Import, and under Whole Team choose Screenshots or ZIP File. Full Count works out which team the screenshots are for, then lists the players it found in the lineups, every one ticked. Untick anyone you'd rather leave out and tap Import.</p>
+      <p>Each player gets their own games, filed under their own team and season. A player who isn't in a game's lineup is passed over for that game. Box scores usually print shortened names, so a player new to Full Count is added under the name the lineup shows, and you can give them their full name afterwards on the team's page under Players. When a shortened name might belong to a player you already track, Full Count asks who it is instead of guessing.</p>
+      <p>One summary at the end shows what every player got. Import the same games again later and nothing is doubled: a number that changed since is updated, and a game you corrected by hand keeps your correction.</p>
+      <p>Whole Team reads screenshots for now. PDFs and CSVs import one player at a time. <a href="faq.html#whole-team">More in the FAQ</a>.</p>
+      </div>
+      <!-- Figure to come: docs/screenshots 40-team-players-sheet and
+           43-team-summary in the app repo ("Shots wanted for 2026-10-04").
+           Neither exists yet; add a shot-pair here once they do. -->
     </section>
 
     <section>
