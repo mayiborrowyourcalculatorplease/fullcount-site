@@ -6,250 +6,177 @@
 <link rel="icon" type="image/png" sizes="32x32" href="images/icon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="images/icon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="images/icon-180.png">
-<title>Full Count · Get more out of GameChanger</title>
-<meta name="description" content="Full Count is an iOS app that turns GameChanger box scores into season-long trend charts for your player. No Team Staff access required.">
+<title>Full Count · Do more with your GameChanger stats</title>
+<meta name="description" content="Full Count is an iPhone app that turns your player's GameChanger box scores into charts that show how they're improving, game by game and season by season.">
 <style>
-  :root { color-scheme: light dark; }
-  * { box-sizing: border-box; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-    line-height: 1.6; margin: 0;
-  }
-  a { color: #0a66c2; color: light-dark(#0a66c2, #6cb4f5); }
-  .muted { color: #555; color: light-dark(#555, #a8a8a8); }
-  main { max-width: 62rem; margin: 0 auto; padding: 0 1.25rem 2rem; }
-
-  .hero { text-align: center; padding: 4rem 1.25rem 2.5rem; }
-  .hero .app-icon { width: 96px; height: 96px; border-radius: 22.5%; display: block;
-                    margin: 0 auto 1rem; box-shadow: 0 4px 16px rgba(0,0,0,0.22); }
-  .hero h1 { font-size: 2.4rem; margin: 0 0 0.25rem; }
-  .tagline { font-size: 1.35rem; font-weight: 600; margin: 0 0 1rem; }
-  .hero p.lede { max-width: 34rem; margin: 0 auto 1.5rem; }
-  .cta {
-    display: inline-block; padding: 0.7rem 1.5rem; border-radius: 0.6rem;
-    background: #0a66c2; color: #fff; text-decoration: none; font-weight: 600;
-  }
-  .cta-note { font-size: 0.9rem; margin-top: 0.75rem; }
-
-  .shots { display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; padding: 1rem 0 2rem; }
-  .shots figure { margin: 0; width: 270px; text-align: center; }
-  .shots img {
-    width: 100%; height: auto; border-radius: 1.4rem;
-    border: 1px solid #ddd; border-color: light-dark(#ddd, #3a3a3a);
-    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-  }
-  .shots figcaption { font-size: 0.85rem; margin-top: 0.5rem; }
-
-  .features { padding: 1rem 0; }
-  .features section { max-width: 40rem; margin: 0 auto 2.25rem; }
-  .features h2 { font-size: 1.35rem; margin: 0 0 0.4rem; }
-  .features p { margin: 0 0 0.75rem; }
-  .features section { display: flex; gap: 2rem; align-items: center; max-width: 52rem; }
-  .features section:nth-child(even) { flex-direction: row-reverse; }
-  .features .copy { flex: 1; }
-  .features .inline-shot { margin: 0 auto; width: 240px; flex-shrink: 0; text-align: center; }
-  .features .inline-shot img { width: 100%; height: auto; border-radius: 18px;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.18); }
-  .features .inline-shot figcaption { font-size: 0.85rem; margin-top: 0.5rem; }
-  .features .shot-pair { display: flex; gap: 1rem; flex-shrink: 0; flex-wrap: wrap; justify-content: center; }
-  .features .shot-pair .inline-shot { width: 200px; margin: 0; }
-  @media (max-width: 640px) {
-    .features section, .features section:nth-child(even) { flex-direction: column; }
-  }
-
-  .closing { text-align: center; padding: 2rem 1.25rem 3rem; }
-  .closing p { max-width: 32rem; margin: 0 auto 1.5rem; }
-
-  footer {
-    text-align: center; padding: 2rem 1.25rem 3rem; font-size: 0.9rem;
-    border-top: 1px solid #ddd; border-top-color: light-dark(#ddd, #3a3a3a);
-  }
+:root{
+  --bg:#ffffff; --fg:#1d1d1f; --muted:#555555; --line:#dddddd; --link:#0a66c2; --cta:#0a66c2; --cta-ink:#ffffff;
+  --card:#f5f6f8;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#141416; --fg:#f2f2f4; --muted:#a8a8a8; --line:#3a3a3a; --link:#6cb4f5; --cta:#0a66c2; --cta-ink:#ffffff;
+  --card:#1f2024; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#141416; --fg:#f2f2f4; --muted:#a8a8a8; --line:#3a3a3a; --link:#6cb4f5; --cta:#0a66c2; --cta-ink:#ffffff;
+  --card:#1f2024; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;line-height:1.6;margin:0}
+a{color:var(--link)}
+.muted{color:var(--muted)}
+main{max-width:62rem;margin:0 auto;padding-inline:16px;padding-block:0 32px}
+.hero{text-align:center;padding:48px 16px 24px}
+.hero img.app-icon{width:96px;height:96px;border-radius:22.5%;display:block;margin:0 auto 16px;box-shadow:0 4px 16px rgba(0,0,0,.22)}
+.hero h1{font-size:2.4rem;margin:0 0 4px}
+.tagline{font-size:1.35rem;font-weight:600;margin:0 0 12px}
+.hero p.lede{max-width:36rem;margin:0 auto 24px;font-size:1.1rem}
+.cta{display:inline-block;padding:.7rem 1.5rem;border-radius:.6rem;background:var(--cta);color:var(--cta-ink);text-decoration:none;font-weight:600}
+.cta-note{font-size:.9rem;margin-top:12px}
+.ways{max-width:58rem;margin:8px auto 40px}
+.ways h2{text-align:center;font-size:1.35rem;margin:0 0 4px}
+.ways .intro{text-align:center;margin:0 0 16px}
+.ways .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:16px}
+.way{background:var(--card);border-radius:14px;padding:18px 20px;display:flex;flex-direction:column;gap:6px}
+.way h3{margin:0;font-size:1.05rem}
+.way p{margin:0}
+.way .gets{font-size:.9rem;color:var(--muted);margin-top:auto;padding-top:6px}
+.ways .foot{text-align:center;font-size:.95rem;margin:14px auto 0;max-width:40rem}
+.features section{display:flex;gap:32px;align-items:center;max-width:52rem;margin:0 auto 40px}
+.features section:nth-of-type(even){flex-direction:row-reverse}
+.features .copy{flex:1;min-width:0}
+.features h2{font-size:1.35rem;margin:0 0 6px;text-wrap:balance}
+.features p{margin:0 0 12px}
+.features ul{margin:0 0 12px;padding-left:1.2rem}
+.features li{margin-bottom:6px}
+.shot{margin:0;width:230px;flex-shrink:0;text-align:center}
+.shot img{width:100%;height:auto;border-radius:18px;box-shadow:0 4px 24px rgba(0,0,0,.18)}
+.shot figcaption{font-size:.85rem;margin-top:8px;color:var(--muted)}
+.pair{display:flex;gap:16px;flex-shrink:0;flex-wrap:wrap;justify-content:center}
+.pair .shot{width:190px}
+@media (max-width:640px){.features section,.features section:nth-of-type(even){flex-direction:column}}
+.closing{text-align:center;padding:24px 16px 40px}
+.closing p{max-width:32rem;margin:0 auto 20px}
+footer{text-align:center;padding:24px 16px 40px;font-size:.9rem;border-top:1px solid var(--line)}
+:focus-visible{outline:2px solid var(--link);outline-offset:2px}
 </style>
 </head>
 <body>
 
+<main>
 <header class="hero">
-  <img class="app-icon" src="images/icon-512.png" width="512" height="512"
-       alt="The Full Count app icon: a home plate marked 3-2, a full count.">
-  <h1>Full Count</h1>
-  <p class="tagline">Get more out of GameChanger.</p>
-  <p class="lede muted">Bring your stats to life with graphs of trends, performance targets,
-  and career bests.</p>
-  <a class="cta" href="mailto:fullcountstattracker@gmail.com?subject=Full%20Count%20beta%20invite%20request">Request an invite to beta test</a>
-  <p class="cta-note muted">Full Count is in beta on TestFlight ahead of its App Store release. Request an invite by email.</p>
+<img class="app-icon" src="images/icon-512.png" width="512" height="512" alt="The Full Count app icon: a home plate marked 3-2, a full count.">
+<h1>Full Count</h1>
+<p class="tagline">Do more with your GameChanger stats.</p>
+<p class="lede muted">Full Count turns your player's GameChanger box scores into charts that show how they're improving, game by game and season by season. The games you add stay on your phone and in your own iCloud, for as long as you want them.</p>
+<p class="cta-note muted">Coming soon to the App Store.</p>
 </header>
 
-<main>
+<section class="ways">
+<h2>Many ways to import your data</h2>
+<p class="intro muted">Full Count takes a game in any of these forms.</p>
+<div class="grid">
+<div class="way"><h3>A CSV or PDF file of the game</h3><p>Share the file to Full Count. A CSV file has the most detail of anything you can add.</p><p class="gets">A CSV includes batting, pitching, fielding and catching.</p></div>
+<div class="way"><h3>Screenshots of the box score</h3><p>Share the screenshots to Full Count. It adds the game for you and tells you if a number looks wrong.</p><p class="gets">Includes batting and pitching.</p></div>
+<div class="way"><h3>Just the final score, or no GameChanger at all</h3><p>Type the game in yourself. Anything you enter shows up in your charts like any other game.</p><p class="gets">Includes whatever you type.</p></div>
+</div>
+<p class="foot muted">You can add fielding and catching to any game later. Open the game and tap Edit.</p>
+</section>
 
-  <div class="features">
+<div class="features">
 
-    <section>
-      <div class="copy">
-      <h2>See progress take shape</h2>
-      <p>Full Count transforms your game exports into trend charts showing development over time.</p>
-      <p>View trends in batting, pitching, catching and fielding across the full career history. You'll see strike percentage, WHIP, ERA, run support, strikeouts and walks per inning on the pitching side. Trends at the plate show batting average, on-base percentage, slugging and OPS. For fielding you'll see fielding percentage, errors and chances. Catching trends show caught-stealing rate, passed balls, innings caught and steals allowed.</p>
-      <p>Graph any trend over the full career, a single season, the last ten games, or any date range you choose.</p>
-      <p>A Season Summary shows a single-point average for each stat, season over season.</p>
-      </div>
-      <div class="shot-pair">
-        <figure class="inline-shot">
-          <img src="images/23-trends-lines.png" width="1206" height="2622"
-               alt="The Trends tab for Spring 2026 batting in Trend Line mode: AVG and SLG charts with one point per game, a rising trend line, and Good and Excellent targets.">
-          <figcaption class="muted">Every game as a point, with the trend line drawn through them.</figcaption>
-        </figure>
-        <figure class="inline-shot">
-          <img src="images/08-season-trends.png" width="1206" height="2622"
-               alt="Season Summary showing trends across seasons, with one point per season for each rate stat.">
-          <figcaption class="muted">Season averages show a snapshot of yearlong progress.</figcaption>
-        </figure>
-      </div>
-    </section>
+<section>
+<div class="copy">
+<h2>Every game, every season, in one place</h2>
+<p>Every game you add is saved on your phone and in your own iCloud. It stays there as your player changes teams, moves up an age group, and grows from one season to the next.</p>
+<p>Full Count slices and dices your data to show you season and career totals and comparisons over time.</p>
+<p>If your player guests for another club or plays on more than one team, it all adds up in one place.</p>
+</div>
+<figure class="shot"><img src="images/09-season-summary.png" width="1206" height="2622" alt="Season Summary listing each season with its record and the teams played for."><figcaption>Every season and every team in one place.</figcaption></figure>
+</section>
 
-    <section>
-      <div class="copy">
-      <h2>Showcase your standout games</h2>
-      <p>Full Count sifts through the data to deduce your best performances, so a career day is never buried under a season of ordinary box scores.</p>
-      <p>At the plate, that means a home run game, three or more hits, a perfect day with a hit in every at bat, and hitting for the cycle (a single, double, triple and home run in one game). On the mound or in the circle, it means a no-hit or perfect outing. In the field, a triple play, a double play, or an errorless game. Behind the plate, a pickoff, two runners thrown out stealing, or a clean game with no passed balls.</p>
-      <p>Best Performances gathers them on one screen, across the whole career.</p>
-      </div>
-      <figure class="inline-shot">
-        <img src="images/18-best-performances-batting.png" width="1206" height="2622"
-             alt="Best Performances on the batting side, listing a perfect day at the plate, two home run games and a multi-hit game.">
-        <figcaption class="muted">Standout games collected in one place.</figcaption>
-      </figure>
-    </section>
+<section>
+<div class="copy">
+<h2>Watch your player's progress</h2>
+<p>Stats for each game are charted with trend lines. Look at a whole career, one season, the last ten games, or any date range you pick. View progress game by game or season by season.</p>
+<p>Charts also show what Good and Excellent look like for your player's age group, from 8U to 18U. When your player moves up an age group, the targets move with them.</p>
+</div>
+<div class="pair">
+<figure class="shot"><img src="images/23-trends-lines.png" width="1206" height="2622" alt="The Trends tab for Spring 2026 batting: AVG and SLG charts with one point per game, a rising trend line, and Good and Excellent targets."><figcaption>Each game charted, with a trend line.</figcaption></figure>
+<figure class="shot"><img src="images/12-game-log-pitching.png" width="1206" height="2622" alt="Season game log with pitching charts. The strike percentage chart climbs across the spring, with a green Good band and a dashed Excellent line."><figcaption>Targets for your player's age group.</figcaption></figure>
+</div>
+</section>
 
-    <section>
-      <div class="copy">
-      <h2>Stay competitive with performance targets</h2>
-      <p>Full Count annotates stat trend charts with performance targets for your player's age division, 8U through 18U.</p>
-      <p>Charts show targets for Good and Excellent levels of performance. Full Count shows performance targets for strike percentage, ERA, WHIP, strikeouts and walks per inning, batting average, on-base percentage, slugging, OPS and plate discipline, along with fielding percentage and caught-stealing rate.</p>
-      <p>Performance targets are graphed true to their age division for the season, so career timelines show the progressing level of competition as performance targets jump. The season over season charts on Season Summary change their targets the same way, measuring each season against its own division. Since no league publishes performance targets, these tiers are not scientific, but reflect coaching consensus rooted in wide public discourse.</p>
-      </div>
-      <figure class="inline-shot">
-        <img src="images/12-game-log-pitching.png" width="1206" height="2622"
-             alt="Season game log with pitching charts. The strike percentage chart climbs across the spring, with a green Good band and a dashed Excellent line.">
-        <figcaption class="muted">Good and Excellent performance targets drawn for the season's division.</figcaption>
-      </figure>
-    </section>
+<section>
+<div class="copy">
+<h2>Add games in batches</h2>
+<p>After a game, import the GameChanger CSV or PDF, or screenshot the GameChanger box score and share the pictures to Full Count. The game appears on your Home screen, in Games and in your charts. If a screenshotted number doesn't add up, Full Count points to it so you can fix it before you save.</p>
+<p>After a tournament, send all your files separately or as a ZIP archive, from your phone, Google Drive or Dropbox folder, and import them in one set. Full Count flags numbers that don't add up, whether the screenshot is hard to read or the scorekeeper made a mistake.</p>
+<p><a href="faq.html#importing">The FAQ has every way to add games.</a></p>
+</div>
+<div class="pair">
+<figure class="shot"><img src="images/39-import-menu-whole-team.png" width="1206" height="2622" alt="The Import menu, with Whole Team choices for Screenshots and ZIP File above the single player choices."><figcaption>Every way to import, from one button.</figcaption></figure>
+<figure class="shot"><img src="images/22-staged-zip.png" width="1206" height="2622" alt="The Home screen with a card reading 2 screenshots, 1 PDF, and 1 CSV are waiting, listing the four files from a shared ZIP."><figcaption>A tournament of games in one ZIP.</figcaption></figure>
+</div>
+</section>
 
-    <section>
-      <div class="copy">
-      <h2>Easy import from GameChanger</h2>
-      <p>Importing a game into Full Count is simple. Send the game stats as a CSV export or box score and choose your player. Full Count will read your team, season, opponent, final score and your player's stats. It appears immediately in Home, Games, Trends, Season Summary and Best Performances.</p>
-      <p>There are several ways to get your stats from GameChanger. If you hold Team Staff access, you can export games in CSV or PDF format. A CSV export is the richest data set, including fielding and catching statistics. A CSV covers whatever GameChanger's stats filter is showing, so filter to the single game before you export it; the <a href="faq.html#csv-export">FAQ has the steps</a>. The box score PDF includes batting and pitching stats. A CSV does not carry the game's date or opponent, so Full Count asks for those two. Send a screenshot of the team's GameChanger Schedule along with your CSVs, in one share or one ZIP, and Full Count fills them in for you, matching each CSV to its game by the final score. If the game's box score is already in, Full Count recognizes the game by its lineup and adds the fielding and catching stats to it.</p>
-      <p>Even without Team Staff access, you can import your box scores simply by taking screenshots of the game. Full Count will stitch the screenshots together, read the stats, and import them just like a full box score PDF. When importing screenshots, Full Count double checks team totals and alerts you when it's possible that a stat was entered incorrectly for your player, so you can correct the record. A screenshot of a PDF box score works too, for when someone sends you a picture of the PDF instead of the file.</p>
-      <p>No GameChanger? No problem. Enter the game directly into Full Count by hand.</p>
-      </div>
-      <figure class="inline-shot">
-        <img src="images/15-import-review-matched.png" width="1206" height="2622"
-             alt="The import review screen with a green banner reading Matched to an existing team and season, above the game details and the player's batting line.">
-        <figcaption class="muted">A game that matches a team and season you already have goes straight in.</figcaption>
-      </figure>
-    </section>
+<section id="whole-team">
+<div class="copy">
+<h2>Add the whole team at once</h2>
+<p>Want to track every player? Choose Whole Team from the Import menu. Full Count lists all players in the lineups with checkboxes to pick which players you want to import.</p>
+</div>
+<div class="pair">
+<figure class="shot"><img src="images/40-team-players-sheet.png" width="1206" height="2622" alt="The list of players found in the lineups, each with a checkbox, all ticked."><figcaption>Pick the players to import.</figcaption></figure>
+<figure class="shot"><img src="images/43-team-summary.png" width="1206" height="2622" alt="The summary after a whole team import, one row per player with the games each one got."><figcaption>One summary for the whole team.</figcaption></figure>
+</div>
+</section>
 
-    <section id="whole-team">
-      <div class="copy">
-      <h2>Import a whole team at once</h2>
-      <p>If you coach, or keep the book for the team, one set of screenshots can fill in every player. Tap Import, and under Whole Team choose Screenshots or ZIP File. Full Count works out which team the screenshots are for, then lists the players it found in the lineups, every one ticked. Untick anyone you'd rather leave out and tap Import.</p>
-      <p>Each player gets their own games, filed under their own team and season. A player who isn't in a game's lineup is passed over for that game. Box scores usually print shortened names, so a player new to Full Count is added under the name the lineup shows, and you can give them their full name afterwards on the team's page under Players. When a shortened name might belong to a player you already track, Full Count asks who it is instead of guessing.</p>
-      <p>One summary at the end shows what every player got. Import the same games again later and nothing is doubled: a number that changed since is updated, and a game you corrected by hand keeps your correction.</p>
-      <p>Whole Team reads screenshots for now. PDFs and CSVs import one player at a time. <a href="faq.html#whole-team">More in the FAQ</a>.</p>
-      </div>
-      <!-- Figure to come: docs/screenshots 40-team-players-sheet and
-           43-team-summary in the app repo ("Shots wanted for 2026-10-04").
-           Neither exists yet; add a shot-pair here once they do. -->
-    </section>
+<section>
+<div class="copy">
+<h2>Stats made for youth games</h2>
+<ul>
+<li><b>Runs Created from your own games.</b> Runs Created with each way of reaching base worth what it actually produced in your player's games, compared with the other hitters in those games.</li>
+<li><b>Per inning stats.</b> Pro ball stats assume nine innings per game in baseball and seven in softball. Full Count lets you see stats per inning, or per game using the number of innings your league plays.</li>
+<li><b>Targets for your player's age group.</b> Measure progress against realistic and attainable goals.</li>
+<li><b>Run support.</b> How many runs the team scored for your pitcher.</li>
+</ul>
+</div>
+<figure class="shot"><img src="images/31-run-support-chart.png" width="1206" height="2622" alt="Pitching charts through a season, including run support game by game."><figcaption>Run support, game by game.</figcaption></figure>
+</section>
 
-    <section>
-      <div class="copy">
-      <h2>Expedite imports with shared storage and ZIP files</h2>
-      <p>Full Count supports importing directly from cloud storage such as Google Drive and Dropbox, so a single Team Staff member can easily share games with the whole team. We recommend sharing the CSV exports for each game, since they carry the richest data set.</p>
-      <p>Combine your games into a single ZIP file for expedited import. No need to organize. You can batch CSV, PDF and screenshots all into the same ZIP file. Full Count asks a few details about the first game import, then handles the rest on its own. CSVs are the exception: each import asks for its date and opponent, since GameChanger doesn't provide this data in the export.</p>
-      <p><a href="faq.html#importing">Every way to import is covered in the FAQ</a>.</p>
-      </div>
-      <div class="shot-pair">
-        <figure class="inline-shot">
-          <img src="images/22-staged-zip.png" width="1206" height="2622"
-               alt="The Home screen with a card reading 2 screenshots, 1 PDF, and 1 CSV are waiting, listing the four files from a shared ZIP, above a Choose Player and Import button.">
-          <figcaption class="muted">One ZIP, three kinds of file, one tap to import.</figcaption>
-        </figure>
-        <figure class="inline-shot">
-          <img src="images/13-import-menu.png" width="1206" height="2622"
-               alt="The Import menu open over the Home screen: Import from PDF, Import from Screenshots, Import from CSV, Import from ZIP, and Enter a Game by Hand.">
-          <figcaption class="muted">Every way in, from one button.</figcaption>
-        </figure>
-      </div>
-    </section>
+<section>
+<div class="copy">
+<h2>Never forget a big game</h2>
+<p>Full Count spots the standout games for you: a home run, three hits, hitting for the cycle, a no-hitter, an errorless game, two runners thrown out stealing. Best Performances keeps them all on one screen and at your fingertips.</p>
+</div>
+<figure class="shot"><img src="images/18-best-performances-batting.png" width="1206" height="2622" alt="Best Performances on the batting side, listing a perfect day at the plate, two home run games and a multi-hit game."><figcaption>Every standout game on one screen.</figcaption></figure>
+</section>
 
-    <section>
-      <div class="copy">
-      <h2>Your Custom Stat View</h2>
-      <p>Choose which stats land on your Home screen, and whether stat pages open on batting, pitching, fielding or catching first. A pitcher's family can see ERA and strike percentage front and center. A slugger's can lead with average and total bases. Fielding and catching tiles can be added too, and they appear once games have been imported from CSV exports.</p>
-      <p>Trend graphs can live on the Home screen too. Press and hold any chart or stat until a menu appears, then choose Add to Home. The graph stays on Home, under the batting, pitching, fielding or catching tiles it belongs with, and a press and hold takes it off again.</p>
-      <p>On the Games page, a filter narrows the list to the games where your player batted, pitched, fielded or caught. Long press any stat to read its definition. ERA, run support, strikeouts and walks are shown per inning, since youth games vary in length, and one setting switches them to per game at the length your league plays.</p>
-      </div>
-      <div class="shot-pair">
-        <figure class="inline-shot">
-          <img src="images/35-pin-menu.png" width="1206" height="2622"
-               alt="A long press on the batting average chart in Trends, with a menu offering See definition of AVG and Add to Home.">
-          <figcaption class="muted">Long press a stat or a chart, then Add to Home.</figcaption>
-        </figure>
-        <figure class="inline-shot">
-          <img src="images/35-home-pinned.png" width="1206" height="2622"
-               alt="The Full Count Home screen showing the career card, the chosen pitching and batting stat tiles, and a pinned batting average chart below them.">
-          <figcaption class="muted">The stats you care about, where you want them.</figcaption>
-        </figure>
-      </div>
-    </section>
+<section>
+<div class="copy">
+<h2>Share with the rest of the family</h2>
+<p>Share your player once, and everyone sees each new game you upload on their own phone. Those who just want to follow along get View Only access. Give Edit access to anyone who would upload games.</p>
+<p>There are no new accounts to set up, and your player's stats stay in your own iCloud.</p>
+</div>
+<figure class="shot"><img src="images/19-family-sharing.png" width="1206" height="2622" alt="Players tab showing four players: one with a pending invitation, one not shared, one shared with this family member, and one shared and accepted."><figcaption>See who each player is shared with.</figcaption></figure>
+</section>
 
-    <section>
-      <div class="copy">
-      <h2>Every stat, explained</h2>
-      <p>Full Count has a Stat Glossary covering every stat it tracks. Each entry says what the stat measures, whether you want it high or low, and where the number comes from. Anything calculated shows its formula, so no number is a mystery.</p>
-      <p>A few stats can be worked out more than one way. Runs Created has two methods, and ERA and the other rate stats can be shown per inning or per game. The glossary explains the difference and links straight to the setting, so you can change it and see the effect.</p>
-      <p>You do not have to go looking for it. Press and hold any stat or chart and choose See definition to open that stat's entry.</p>
-      </div>
-      <div class="shot-pair">
-        <figure class="inline-shot">
-          <img src="images/37-glossary-list.png" width="1206" height="2622"
-               alt="The Stat Glossary list on the catching side, each entry showing its abbreviation, full name, definition and whether higher or lower is better.">
-          <figcaption class="muted">Every stat, on all four sides.</figcaption>
-        </figure>
-        <figure class="inline-shot">
-          <img src="images/38-glossary-formula.png" width="1206" height="2622"
-               alt="The glossary entry for ERA: a Lower is better badge, the definition, what it means for your player, and the formula, earned runs divided by innings pitched.">
-          <figcaption class="muted">What it means, which way is better, and how it is calculated.</figcaption>
-        </figure>
-      </div>
-    </section>
+<section>
+<div class="copy">
+<h2>Set it up your way</h2>
+<p>Pick the stats and charts you want on your Home screen. Press and hold any chart to pin it to Home. Press and hold any stat to view the Glossary definition and how it's calculated.</p>
+</div>
+<figure class="shot"><img src="images/37-glossary-list.png" width="1206" height="2622" alt="The Stat Glossary list, each entry showing its abbreviation, full name, definition and whether higher or lower is better."><figcaption>Every stat, explained.</figcaption></figure>
+</section>
 
-    <section>
-      <div class="copy">
-      <h2>Family sharing through iCloud</h2>
-      <p>Share a player once and every phone stays current. Imports appear on each family member's device automatically and notify you when someone adds a game. Access is granted per person: View Only for relatives who follow along, or Edit privileges for someone who imports games. Full Count requires no other accounts and doesn't share your data with any third party. Your player's data is stored on your device, in your own iCloud.</p>
-      <p>The first time you share a player, Full Count copies that player's records into the share, which can take a minute. A banner at the top shows the progress, and you can keep using the app while it works.</p>
-      </div>
-      <figure class="inline-shot">
-        <img src="images/19-family-sharing.png" width="1206" height="2622"
-             alt="Players tab showing four players: one with a pending invitation, one not shared, one shared with this family member, and one shared and accepted in green.">
-        <figcaption class="muted">Sharing status at a glance: invited, accepted, or shared with you.</figcaption>
-      </figure>
-    </section>
-  </div>
-
+</div>
 </main>
 
 <div class="closing">
-  <p>Full Count is in beta on TestFlight ahead of its App Store release. Request an
-  invite and we will send one to your email.</p>
-  <a class="cta" href="mailto:fullcountstattracker@gmail.com?subject=Full%20Count%20beta%20invite%20request">Request an invite to beta test</a>
+<p>Full Count is coming soon to the App Store.</p>
 </div>
-
 <footer class="muted">
-  <p>Full Count is not affiliated with or endorsed by GameChanger. GameChanger is a trademark of its respective owner.</p>
-  <p>All screenshots show fictional demonstration data.</p>
-  <p><a href="faq.html">FAQ</a> · <a href="privacy.html">Privacy Policy</a> · <a href="mailto:fullcountstattracker@gmail.com">Contact</a></p>
+<p>Full Count is not affiliated with or endorsed by GameChanger. GameChanger is a trademark of its respective owner.</p>
+<p>All screenshots show fictional demonstration data.</p>
+<p><a href="faq.html">FAQ</a> · <a href="privacy.html">Privacy Policy</a> · <a href="mailto:fullcountstattracker@gmail.com">Contact</a></p>
 </footer>
 
 </body>
